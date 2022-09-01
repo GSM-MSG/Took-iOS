@@ -1,7 +1,3 @@
-# 프로젝트 이름 세팅
-
-Tuist/ProjectDescriptionHelpers/Environment.swift 의 appName, targetName을 프로젝트 이름으로 변경.
-
 # new feature 생성
 
 터미널에서 Project root경로에서 Scripts/generate_new_feature.py를 실행한 후 새로운 Feature 이름 입력.
