@@ -27,6 +27,7 @@ let targets: [Target] = [
         resources: ["Resources/**"],
         scripts: scripts,
         dependencies: [
+            .SPM.Swinject
         ],
         settings: .settings(base: Environment.baseSetting)
     ),
@@ -78,6 +79,9 @@ let project: Project =
     .init(
         name: Environment.targetName,
         organizationName: Environment.organizationName,
+        packages: [
+            .Swinject
+        ],
         settings: settinges,
         targets: targets,
         schemes: schemes
