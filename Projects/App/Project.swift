@@ -27,7 +27,9 @@ let targets: [Target] = [
         resources: ["Resources/**"],
         scripts: scripts,
         dependencies: [
-            .SPM.Needle
+            .Project.Features.RootFeature,
+            .Project.Service.Data,
+            .Project.Module.ThirdPartyLib
         ],
         settings: .settings(base: Environment.baseSetting)
     ),
@@ -40,9 +42,9 @@ let targets: [Target] = [
         infoPlist: .default,
         sources: ["Tests/**"],
         dependencies: [
-            .target(name: Environment.targetName),
+            .target(name: Environment.targetName)
         ]
-    ),
+    )
 ]
 
 let schemes: [Scheme] = [
