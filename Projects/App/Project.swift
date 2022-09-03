@@ -11,7 +11,8 @@ let settinges: Settings =
               defaultSettings: .recommended)
 
 let scripts: [TargetScript] = [
-    .swiftLint
+    .swiftLint,
+    .needle
 ]
 
 let targets: [Target] = [
