@@ -1,0 +1,28 @@
+name: master
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  ci:
+    runs-on: macos-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        xcode-version: latest
+        
+    - name: install tuist
+      run: curl -Ls https://install.tuist.io | bash
+      
+    - name: project Generate
+      run: |
+        rm -rf .package.resolved
+        tuist generate
+      
+    - name: build
+      run: tuist build
+      
+    - name: test
+      run: tuist test
