@@ -1,6 +1,7 @@
 import ProjectDescriptionHelpers
 import ProjectDescription
 import UtilityPlugin
+import Foundation
 
 let settinges: Settings =
     .settings(base: Environment.baseSetting,
@@ -10,9 +11,9 @@ let settinges: Settings =
               ],
               defaultSettings: .recommended)
 
-let scripts: [TargetScript] = [
-    .swiftLint
-]
+let isForDev = (ProcessInfo.processInfo.environment["TUIST_DEV"] ?? "0") == "1" ? true : false
+
+let scripts: [TargetScript] = isForDev ? [.swiftLint, .needle] : []
 
 let targets: [Target] = [
     .init(
@@ -27,7 +28,9 @@ let targets: [Target] = [
         resources: ["Resources/**"],
         scripts: scripts,
         dependencies: [
-            .SPM.Swinject
+            .Project.Features.RootFeature,
+            .Project.Service.Data,
+            .Project.Module.ThirdPartyLib
         ],
         settings: .settings(base: Environment.baseSetting)
     ),
@@ -40,9 +43,9 @@ let targets: [Target] = [
         infoPlist: .default,
         sources: ["Tests/**"],
         dependencies: [
-            .target(name: Environment.targetName),
+            .target(name: Environment.targetName)
         ]
-    ),
+    )
 ]
 
 let schemes: [Scheme] = [
@@ -79,9 +82,6 @@ let project: Project =
     .init(
         name: Environment.targetName,
         organizationName: Environment.organizationName,
-        packages: [
-            .Swinject
-        ],
         settings: settinges,
         targets: targets,
         schemes: schemes
