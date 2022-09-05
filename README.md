@@ -1,6 +1,6 @@
 # new feature 생성
 
-터미널에서 Project root경로에서 Scripts/generate_new_feature.py를 실행한 후 새로운 Feature 이름 입력.
+터미널에서 Project root경로에서 make feature를 실행한 후 새로운 Feature 이름 입력.
 
 # Tuist graph
 
