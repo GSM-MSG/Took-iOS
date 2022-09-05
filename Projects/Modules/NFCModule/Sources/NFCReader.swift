@@ -1,21 +1,21 @@
 import CoreNFC
 
-final class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
-    var actualData: String?
-    var nfcSession: NFCNDEFReaderSession?
+public final class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
+    public var actualData: String?
+    public var nfcSession: NFCNDEFReaderSession?
 
-    func scan(data actualData: String) {
+    public func scan(data actualData: String) {
         self.actualData = actualData
         nfcSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
         nfcSession?.alertMessage = "주변 Took을 실행한 기기와 가까이해주세요!"
         nfcSession?.begin()
     }
 
-    func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {}
+    public func readerSession(_ session: NFCNDEFReaderSession, didInvalidateWithError error: Error) {}
 
-    func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {}
+    public func readerSession(_ session: NFCNDEFReaderSession, didDetectNDEFs messages: [NFCNDEFMessage]) {}
 
-    func readerSession(_ session: NFCNDEFReaderSession, didDetect tags: [NFCNDEFTag]) {
+    public func readerSession(_ session: NFCNDEFReaderSession, didDetect tags: [NFCNDEFTag]) {
         if tags.count > 1 {
             let retryInterval: DispatchTimeInterval = .milliseconds(500)
             session.alertMessage = "1개 보다 많은 NFC 태그가 감지되었어요, 다시 시도해주세요!"
