@@ -2,11 +2,9 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.makeModule(
-    name: "RootFeature",
+    name: "VerifyFeature",
     product: .staticFramework,
     dependencies: [
-        .Project.Features.CommonFeature,
-        .Project.Features.IntroFeature,
-        .Project.Features.MainFeature,
+        .Project.Features.CommonFeature
     ]
 )
