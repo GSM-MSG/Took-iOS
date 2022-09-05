@@ -42,13 +42,13 @@ let project = Project.makeModule(
     file_content += ",\n        ".join(dependencies)
     file_content += "\n    ]" 
     file_content += ",\n    hasDemo: true" if has_demo else ""
-    file_content += "\n)"
+    file_content += "\n)\n"
     write_code_in_file(project_path, file_content)
 
 def make_sources(feature_name):
     make_dir(f'{feature_name}Feature/Sources')
     feature_file_path = f'{feature_name}Feature/Sources/{feature_name}Feature.swift'
-    feature_content = '// This is for tuist'
+    feature_content = '// This is for tuist\n'
     write_code_in_file(feature_file_path, feature_content)
 
 def make_tests(feature_name):
