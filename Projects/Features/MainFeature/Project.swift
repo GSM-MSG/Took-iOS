@@ -2,11 +2,12 @@ import ProjectDescription
 import ProjectDescriptionHelpers
 
 let project = Project.makeModule(
-    name: "RootFeature",
+    name: "MainFeature",
     product: .staticFramework,
     dependencies: [
         .Project.Features.CommonFeature,
-        .Project.Features.IntroFeature,
-        .Project.Features.MainFeature,
+        .Project.Features.CardFeature,
+        .Project.Features.CardListFeature,
+        .Project.Features.SettingFeature
     ]
 )
