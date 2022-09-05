@@ -36,18 +36,17 @@ final class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
                             .wellKnownTypeTextPayload(string: actualData ?? "", locale: .current)!
                         ])
                     )
-                    session.alertMessage = "전송에 성공했습니다!"
-                    session.invalidate()
+                    nfcInvalidateAlert(session: session, message: "전송에 성공했습니다!")
                 default:
-                    nfcExceptionAlert(session: session, message: "NFC 태그에 연결할 수 없어요!")
+                    nfcInvalidateAlert(session: session, message: "NFC 태그에 연결할 수 없어요!")
                 }
             } catch {
-                nfcExceptionAlert(session: session, message: "NFC 태그에 연결할 수 없어요!")
+                nfcInvalidateAlert(session: session, message: "NFC 태그에 연결할 수 없어요!")
             }
         }
     }
 
-    private func nfcExceptionAlert(session: NFCNDEFReaderSession, message: String) {
+    private func nfcInvalidateAlert(session: NFCNDEFReaderSession, message: String) {
         session.alertMessage = message
         session.invalidate()
     }
