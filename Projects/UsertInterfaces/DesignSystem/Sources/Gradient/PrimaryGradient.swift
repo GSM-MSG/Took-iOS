@@ -14,7 +14,7 @@ public extension RadialGradient {
         ]),
         center: .init(x: -0.5058307434425922, y: 0.4999999916185889),
         startRadius: 9.655802736371795,
-        endRadius: 743.6020164377771
+        endRadius: 1043.6020164377771
     )
 }
 
