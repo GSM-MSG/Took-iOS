@@ -4,17 +4,17 @@ public extension RadialGradient {
     static let primary = RadialGradient(
         gradient: Gradient(stops: [
             .init(
-                color: Color(red: 0.3333, green: 0.2274, blue: 0.9098),
-                location: 0.0013448053505271673
+                color: Color(red: 0.4078, green: 0.2549, blue: 0.9098),
+                location: 0
             ),
             .init(
-                color: Color(red: 0.8941, green: 0.4313, blue: 0.898),
+                color: Color(red: 0.5529, green: 0.3098, blue: 0.9058),
                 location: 1
             )
         ]),
-        center: .init(x: -0.5058307434425922, y: 0.4999999916185889),
-        startRadius: 9.655802736371795,
-        endRadius: 1043.6020164377771
+        center: UnitPoint(x: -7.450580927215178e-8, y: 0.49999996274709524),
+        startRadius: 3.260282052530631,
+        endRadius: 223.60680774598225
     )
 }
 
@@ -23,11 +23,8 @@ public struct PrimaryGradientPreview: PreviewProvider {
         VStack {
             RoundedRectangle(cornerRadius: 16)
                 .fill(RadialGradient.primary)
-            .frame(width: 343, height: 56)
-
-            RoundedRectangle(cornerRadius: 40)
-                .fill(RadialGradient.primary)
-            .frame(width: 100, height: 100)
+                .frame(height: 56)
+                .padding(.horizontal)
         }
     }
 }
