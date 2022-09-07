@@ -42,7 +42,11 @@ public struct TookTypography: ViewModifier {
 }
 
 public extension View {
-    func tookType(_ style: TookTypography.Style) -> some View {
+    func tookTypo(_ style: TookTypography.Style) -> some View {
         self.modifier(TookTypography(style: style))
+    }
+    func tookTypo(_ style: TookTypography.Style, color: Color) -> some View {
+        self.modifier(TookTypography(style: style))
+            .foregroundColor(color)
     }
 }
