@@ -21,7 +21,7 @@ public struct TookCheckbox: View {
 
 public struct TookCheckbox_Previews: PreviewProvider {
     public static var previews: some View {
-        VStack {
+        HStack {
             TookCheckbox(isOn: .constant(true))
             TookCheckbox(isOn: .constant(false))
         }
