@@ -1,16 +1,31 @@
 import NeedleFoundation
+import CommonFeature
+import IntroFeature
+import MainFeature
 
 public protocol RootDependency: Dependency {
 }
 
 public final class RootComponent: Component<RootDependency> {
-    public var rootViewModel: RootViewModel {
+    public var rootViewModel: SceneStateModel {
         shared {
-            RootViewModel()
+            SceneStateModel()
         }
     }
 
+    public var introBuilder: IntroComponent {
+        IntroComponent(parent: self)
+    }
+
+    public var mainBuilder: MainComponent {
+        MainComponent(parent: self)
+    }
+
     public func makeView() -> RootView {
-        RootView(viewModel: rootViewModel)
+        RootView(
+            sceneStateModel: rootViewModel,
+            introBuilder: introBuilder,
+            mainBuilder: mainBuilder
+        )
     }
 }
