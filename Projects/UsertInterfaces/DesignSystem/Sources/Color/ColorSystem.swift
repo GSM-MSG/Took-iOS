@@ -11,13 +11,13 @@ public extension Color {
 }
 
 public extension Color.Took {
-    static let white = DesignSystemAsset.white.suiColor
-    static let lightGray = DesignSystemAsset.lightGray.suiColor
-    static let gray = DesignSystemAsset.gray.suiColor
-    static let darkGray = DesignSystemAsset.darkGray.suiColor
-    static let veryDarkGray = DesignSystemAsset.veryDarkGray.suiColor
-    static let veryVeryDarkGray = DesignSystemAsset.veryVeryDarkGray.suiColor
-    static let black = DesignSystemAsset.black.suiColor
-    static let strok = DesignSystemAsset.strok.suiColor
-    static let transparencyBoxBg = DesignSystemAsset.transparencyBoxBg.suiColor
+    static let white = DesignSystemAsset.Colors.white.suiColor
+    static let lightGray = DesignSystemAsset.Colors.lightGray.suiColor
+    static let gray = DesignSystemAsset.Colors.gray.suiColor
+    static let darkGray = DesignSystemAsset.Colors.darkGray.suiColor
+    static let veryDarkGray = DesignSystemAsset.Colors.veryDarkGray.suiColor
+    static let veryVeryDarkGray = DesignSystemAsset.Colors.veryVeryDarkGray.suiColor
+    static let black = DesignSystemAsset.Colors.black.suiColor
+    static let strok = DesignSystemAsset.Colors.strok.suiColor
+    static let transparencyBoxBg = DesignSystemAsset.Colors.transparencyBoxBg.suiColor
 }
