@@ -7,6 +7,6 @@ let project = Project.makeModule(
     dependencies: [
         .Project.Features.CommonFeature,
         .Project.Features.IntroFeature,
-        .Project.Features.MainFeature,
+        .Project.Features.MainFeature
     ]
 )
