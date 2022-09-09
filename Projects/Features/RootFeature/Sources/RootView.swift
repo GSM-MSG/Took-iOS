@@ -1,19 +1,31 @@
 import SwiftUI
+import CommonFeature
+import IntroFeature
+import MainFeature
 
 public struct RootView: View {
-    @StateObject var viewModel: RootViewModel
+    @StateObject var sceneStateModel: SceneStateModel
+    let introBuilder: IntroComponent
+    let mainBuilder: MainComponent
 
-    public init(viewModel: RootViewModel) {
-        _viewModel = StateObject(wrappedValue: viewModel)
+    public init(
+        sceneStateModel: SceneStateModel,
+        introBuilder: IntroComponent,
+        mainBuilder: MainComponent
+    ) {
+        _sceneStateModel = StateObject(wrappedValue: sceneStateModel)
+        self.introBuilder = introBuilder
+        self.mainBuilder = mainBuilder
     }
 
     public var body: some View {
-        Text("Hello, World!")
-    }
-}
-
-struct RootView_Previews: PreviewProvider {
-    static var previews: some View {
-        RootView(viewModel: .init())
+        switch sceneStateModel.sceneState {
+        case .intro:
+            introBuilder.makeView()
+                .environmentObject(sceneStateModel)
+        case .main:
+            mainBuilder.makeView()
+                .environmentObject(sceneStateModel)
+        }
     }
 }
