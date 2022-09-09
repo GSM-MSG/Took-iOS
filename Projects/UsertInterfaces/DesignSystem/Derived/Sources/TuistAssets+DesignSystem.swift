@@ -29,6 +29,14 @@ public enum DesignSystemAsset {
     public static let veryVeryDarkGray = DesignSystemColors(name: "VeryVeryDarkGray")
     public static let white = DesignSystemColors(name: "White")
   }
+  public enum Icons {
+    public static let card = DesignSystemImages(name: "Card")
+    public static let gear = DesignSystemImages(name: "Gear")
+    public static let horizontal = DesignSystemImages(name: "Horizontal")
+    public static let tabCardList = DesignSystemImages(name: "TabCardList")
+    public static let tabHome = DesignSystemImages(name: "TabHome")
+    public static let vertical = DesignSystemImages(name: "Vertical")
+  }
   public enum Images {
     public static let background = DesignSystemImages(name: "Background")
   }
