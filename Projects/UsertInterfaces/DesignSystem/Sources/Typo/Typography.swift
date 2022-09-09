@@ -1,5 +1,5 @@
 import SwiftUI
-// swiftlint:disable identifier_name nesting function_body_length
+// swiftlint:disable nesting
 public struct TookTypography: ViewModifier {
     public enum Style {
         case regular(Regular)
