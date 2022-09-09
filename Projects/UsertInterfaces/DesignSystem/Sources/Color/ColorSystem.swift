@@ -20,4 +20,5 @@ public extension Color.Took {
     static let black = DesignSystemAsset.Colors.black.suiColor
     static let strok = DesignSystemAsset.Colors.strok.suiColor
     static let transparencyBoxBg = DesignSystemAsset.Colors.transparencyBoxBg.suiColor
+    static let error = DesignSystemAsset.Colors.error.suiColor
 }
