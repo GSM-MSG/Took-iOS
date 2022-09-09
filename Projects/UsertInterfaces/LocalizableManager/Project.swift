@@ -5,6 +5,5 @@ let project = Project.makeModule(
     name: "LocalizableManager",
     product: .framework,
     dependencies: [
-    
     ]
 )
