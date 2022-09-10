@@ -11,24 +11,27 @@ public struct TookImage: View {
         case background
     }
 
-    public var image: Image
+    var image: Image
+    var renderingMode: SwiftUI.Image.TemplateRenderingMode
 
     public init(
-        _ image: Image
+        _ image: Image,
+        renderingMode: SwiftUI.Image.TemplateRenderingMode = .original
     ) {
         self.image = image
+        self.renderingMode = renderingMode
     }
 
     public var body: some View {
         imageToImage()
+            .resizable()
+            .renderingMode(renderingMode)
     }
 
-    private func imageToImage() -> some View {
+    private func imageToImage() -> SwiftUI.Image {
         switch image {
         case .background:
             return DesignSystemAsset.Images.background.suiImage
-                .resizable()
-                .renderingMode(.original)
         }
     }
 }
