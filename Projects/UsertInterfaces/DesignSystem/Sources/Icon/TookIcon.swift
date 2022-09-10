@@ -7,9 +7,10 @@ public struct TookIcon: View {
         case horizontal
         case plusCircleFill
         case card
+        case selectedCard
 
         case tabHome
-        case tabCardLIst
+        case tabCardList
     }
 
     var icon: Icon
@@ -52,9 +53,11 @@ public struct TookIcon: View {
             return Image(systemName: "plus.circle.fill")
         case .card:
             return DesignSystemAsset.Icons.card.suiImage
+        case .selectedCard:
+            return DesignSystemAsset.Icons.selectedCard.suiImage
         case .tabHome:
             return DesignSystemAsset.Icons.tabHome.suiImage
-        case .tabCardLIst:
+        case .tabCardList:
             return DesignSystemAsset.Icons.tabCardList.suiImage
         }
     }

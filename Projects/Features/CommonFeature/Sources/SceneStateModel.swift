@@ -5,6 +5,6 @@ public final class SceneStateModel: ObservableObject {
     @Published public var sceneState: SceneState
 
     public init() {
-        sceneState = .intro
+        sceneState = .main
     }
 }
