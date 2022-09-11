@@ -15,7 +15,7 @@ public extension TookAPI {
     var path: String {
         domain.asURL + urlPath
     }
-    var headers: [String : String]? {
+    var headers: [String: String]? {
         return ["Content-Type": "application/json"]
     }
 }
