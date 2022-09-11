@@ -4,6 +4,8 @@ import IntroFeature
 import MainFeature
 
 public protocol RootDependency: Dependency {
+    var introComponent: IntroComponent { get }
+    var mainComponent: MainComponent { get }
 }
 
 public final class RootComponent: Component<RootDependency> {
@@ -13,19 +15,11 @@ public final class RootComponent: Component<RootDependency> {
         }
     }
 
-    public var introBuilder: IntroComponent {
-        IntroComponent(parent: self)
-    }
-
-    public var mainBuilder: MainComponent {
-        MainComponent(parent: self)
-    }
-
     public func makeView() -> RootView {
         RootView(
             sceneStateModel: rootViewModel,
-            introBuilder: introBuilder,
-            mainBuilder: mainBuilder
+            introBuilder: dependency.introComponent,
+            mainBuilder: dependency.mainComponent
         )
     }
 }

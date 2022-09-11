@@ -66,7 +66,7 @@ public extension Project {
         )
         let demoSource: SourceFilesList = ["Demo/Sources/**"]
         let demoSources: SourceFilesList = SourceFilesList(globs: sources.globs + demoSource.globs)
-        
+
         let demoAppTarget = Target(
             name: "\(name)DemoApp",
             platform: platform,
@@ -76,7 +76,7 @@ public extension Project {
             infoPlist: .extendingDefault(with: [
                 "UIMainStoryboardFile": "",
                 "UILaunchStoryboardName": "LaunchScreen",
-                "ENABLE_TESTS": .boolean(true),
+                "ENABLE_TESTS": .boolean(true)
             ]),
             sources: demoSources,
             resources: ["Demo/Resources/**"],
@@ -85,11 +85,11 @@ public extension Project {
                 .target(name: name)
             ]
         )
-        
+
         let testTargetDependencies: [TargetDependency] = hasDemoApp
         ? [.target(name: "\(name)DemoApp")]
         : [.target(name: name)]
-        
+
         let testTarget = Target(
             name: "\(name)Tests",
             platform: platform,
@@ -100,15 +100,15 @@ public extension Project {
             sources: ["Tests/**"],
             dependencies: testTargetDependencies
         )
-        
+
         let schemes: [Scheme] = hasDemoApp
         ? [.makeScheme(target: .debug, name: name), .makeDemoScheme(target: .debug, name: name)]
         : [.makeScheme(target: .debug, name: name)]
-        
+
         let targets: [Target] = hasDemoApp
         ? [appTarget, testTarget, demoAppTarget]
         : [appTarget, testTarget]
-        
+
         return Project(
             name: name,
             organizationName: organizationName,
