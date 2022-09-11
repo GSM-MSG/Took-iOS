@@ -5,7 +5,6 @@ let project = Project.makeModule(
     name: "DomainModule",
     product: .staticFramework,
     dependencies: [
-        .Project.Module.ThirdPartyLib,
-        .Project.Service.APIKit
+        .Project.Module.ThirdPartyLib
     ]
 )
