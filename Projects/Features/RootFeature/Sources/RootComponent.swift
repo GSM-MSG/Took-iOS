@@ -8,7 +8,7 @@ public protocol RootDependency: Dependency {
     var mainComponent: MainComponent { get }
 }
 
-public final class RootComponent: Component<RootDependency> {
+public final class RootComponent: Component<RootDependency>, ComponentBuilder {
     public var rootViewModel: SceneStateModel {
         shared {
             SceneStateModel()
