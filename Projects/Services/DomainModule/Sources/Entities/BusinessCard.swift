@@ -1,7 +1,13 @@
 import Foundation
 
 public struct BusinessCard: Equatable {
-    public init(uuid: String, frontUrl: String, backUrl: String, createdAt: Date, updatedAt: Date) {
+    public init(
+        uuid: String,
+        frontUrl: String,
+        backUrl: String,
+        createdAt: Date,
+        updatedAt: Date
+    ) {
         self.uuid = uuid
         self.frontUrl = frontUrl
         self.backUrl = backUrl
