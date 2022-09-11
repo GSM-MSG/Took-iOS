@@ -1,5 +1,6 @@
 import Moya
 import Foundation
+import ErrorModule
 
 public protocol TookAPI: TargetType, JwtAuthorizable {
     var domain: TookDomain { get }
