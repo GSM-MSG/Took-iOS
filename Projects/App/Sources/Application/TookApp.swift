@@ -1,5 +1,6 @@
 import SwiftUI
 import NeedleFoundation
+import KeychainModule
 
 @main
 struct TookApp: App {

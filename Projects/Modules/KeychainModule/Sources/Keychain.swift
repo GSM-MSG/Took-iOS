@@ -31,11 +31,13 @@ public struct Keychain {
             kSecReturnData: kCFBooleanTrue!,
             kSecMatchLimit: kSecMatchLimitOne
         ]
-        var ref: AnyObject?
-        _ = SecItemCopyMatching(query, &ref)
-        guard let data = ref as? Data else { return "" }
-        let value = String(data: data, encoding: .utf8)
-        return value ?? ""
+        var dataTypeRef: AnyObject?
+        let status = withUnsafeMutablePointer(to: &dataTypeRef) { SecItemCopyMatching(query, UnsafeMutablePointer($0)) }
+        if status == errSecSuccess {
+            guard let data = dataTypeRef as? Data else { return "" }
+            return String(data: data, encoding: .utf8) ?? ""
+        }
+        return ""
     }
 
     public func delete(type: KeychainType) {
