@@ -28,6 +28,7 @@ public extension TargetDependency.Project.Module {
     static let Utility = TargetDependency.module(name: "Utility")
     static let NFCModule = TargetDependency.module(name: "NFCModule")
     static let KeychainModule = TargetDependency.module(name: "KeychainModule")
+    static let ErrorModule = TargetDependency.module(name: "ErrorModule")
 }
 
 public extension TargetDependency.Project.Service {
@@ -36,6 +37,7 @@ public extension TargetDependency.Project.Service {
     static let Domain = TargetDependency.service(name: "DomainModule")
     static let DatabaseModule = TargetDependency.service(name: "DatabaseModule")
     static let NetworkModule = TargetDependency.service(name: "NetworkModule")
+    static let DataMappingModule = TargetDependency.service(name: "DataMappingModule")
 }
 
 public extension TargetDependency.Project.UserInterfaces {
