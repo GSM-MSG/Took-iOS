@@ -1,6 +1,5 @@
 import SwiftUI
 import NeedleFoundation
-import DesignSystem
 
 @main
 struct TookApp: App {
