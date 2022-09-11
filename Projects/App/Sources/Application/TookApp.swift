@@ -11,9 +11,7 @@ struct TookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            VStack {
-                TookTextField("123", isError: false, buttonAction: {}, onCommit: {}, text: .constant(""))
-            }
+            AppComponent().makeRootView()
         }
     }
 }
