@@ -27,6 +27,7 @@ public extension TargetDependency.Project.Module {
     static let FeatureThirdPartyLib = TargetDependency.module(name: "FeatureThirdPartyLib")
     static let Utility = TargetDependency.module(name: "Utility")
     static let NFCModule = TargetDependency.module(name: "NFCModule")
+    static let KeychainModule = TargetDependency.module(name: "KeychainModule")
 }
 
 public extension TargetDependency.Project.Service {
