@@ -1,5 +1,6 @@
 import ProjectDescription
 
+// swiftlint:disable nesting
 public extension TargetDependency {
     struct Project {
         public struct Features {}
