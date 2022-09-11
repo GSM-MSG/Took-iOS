@@ -1,5 +1,6 @@
 import SwiftUI
 import NeedleFoundation
+import DesignSystem
 
 @main
 struct TookApp: App {
@@ -10,7 +11,7 @@ struct TookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AppComponent().makeRootView()
+            TookTextField("123", isError: false, buttonAction: {}, onCommit: {}, text: .constant("1"))
         }
     }
 }
