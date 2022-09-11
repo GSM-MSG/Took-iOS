@@ -23,24 +23,27 @@ public struct TookTextField: View {
     }
 
     public var body: some View {
-        VStack {
-            TextField("", text: $text)
-                .padding()
-                .foregroundColor(Color.Took.white)
-                .modifier(TookTextFieldClearModifier(text: $text))
-                .modifier(PlaceholderStyle( placeholder: placeHolderText))
-                .background(Color.Took.transparencyBoxBg)
-                .overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.Took.darkGray))
-                .onSubmit(onCommit)
-                .focused($ifFocus)
-                .cornerRadius(16)
-                .if(ifFocus) {
-                    $0.overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(RadialGradient.primary))
+        TextField("", text: $text)
+            .padding()
+            .foregroundColor(Color.Took.white)
+            .modifier(TookTextFieldClearModifier(text: $text))
+            .modifier(PlaceholderStyle( placeholder: placeHolderText))
+            .background(Color.Took.transparencyBoxBg)
+            .onSubmit(onCommit)
+            .cornerRadius(16)
+            .focused($ifFocus)
+            .overlay {
+                if ifFocus {
+                    RoundedRectangle(cornerRadius: 16)
+                        .strokeBorder(RadialGradient.primary)
+                } else if isError {
+                    RoundedRectangle(cornerRadius: 16)
+                        .strokeBorder(Color.Took.error)
+                } else {
+                    RoundedRectangle(cornerRadius: 16)
+                        .strokeBorder(Color.Took.darkGray)
                 }
-                .if(isError) {
-                    $0.overlay(RoundedRectangle(cornerRadius: 16).strokeBorder(Color.Took.error))
-                }
-        }.padding()
+            }
     }
 
 }
