@@ -4,28 +4,25 @@ public struct TookTextField: View {
     var labelText: String
     var placeholderText: String
     var isError: Bool
-    var buttonAction: () -> Void
     var onCommit: () -> Void
     var errorText: String
     @Binding var text: String
     @FocusState var isFocus: Bool
 
     public init(
-        _ textFieldHeader: String = "",
+        _ labelText: String = "",
         placeHolderText: String = "",
+        text: Binding<String>,
         isError: Bool = false,
         errorText: String = "",
-        text: Binding<String>,
-        buttonAction: @escaping () -> Void = {},
         onCommit: @escaping () -> Void = {}
     ) {
-        self.labelText = textFieldHeader
+        self.labelText = labelText
         self.placeholderText = placeHolderText
+        self._text = text
         self.isError = isError
         self.errorText = errorText
-        self.buttonAction = buttonAction
         self.onCommit = onCommit
-        self._text = text
     }
 
     public var body: some View {
@@ -63,7 +60,6 @@ public struct TookTextField: View {
                     Image(systemName: "exclamationmark.circle")
                         .foregroundColor(Color.Took.error)
                 }
-                .padding(.leading, 10)
             }
         }
     }
@@ -108,10 +104,10 @@ public struct TookTextField_Previews: PreviewProvider {
                 TookImage(.background)
                     .ignoresSafeArea()
                 ScrollView {
-                    TookTextField("제목입니당", placeHolderText: "뭐라도 입력해주세요", isError: false, text: .constant(""))
-                    TookTextField("제목입니당", placeHolderText: "뭐라도 입력해주세요", isError: false, text: .constant("123123123312113"))
-                    TookTextField("제목입니당", placeHolderText: "뭐라도 입력해주세요", isError: false, text: .constant(""))
-                    TookTextField("제목입니당", placeHolderText: "뭐라도 입력해주세요", isError: true, errorText: "안녕하세요", text: .constant(""))
+                    TookTextField("제목입니당", placeHolderText: "뭐라도 입력해주세요", text: .constant(""), isError: false)
+                    TookTextField("제목입니당", placeHolderText: "뭐라도 입력해주세요", text: .constant("123123123312113"), isError: false)
+                    TookTextField("제목입니당", placeHolderText: "뭐라도 입력해주세요", text: .constant(""), isError: false)
+                    TookTextField("제목입니당", placeHolderText: "뭐라도 입력해주세요", text: .constant(""), isError: true, errorText: "안녕하세요")
                 }
                 .padding()
             }
