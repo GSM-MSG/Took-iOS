@@ -12,7 +12,7 @@ public struct TookTextField: View {
 
     public init(
         _ textFieldHeader: String = "",
-        placeHolderText: String = "",
+        placeholderText: String = "",
         isError: Bool = false,
         errorText: String = "",
         text: Binding<String>,
@@ -20,7 +20,7 @@ public struct TookTextField: View {
         onCommit: @escaping () -> Void = {}
     ) {
         self.labelText = textFieldHeader
-        self.placeholderText = placeHolderText
+        self.placeholderText = placeholderText
         self.isError = isError
         self.errorText = errorText
         self.buttonAction = buttonAction
