@@ -54,7 +54,7 @@ public struct TookTextField: View {
                             .strokeBorder(Color.Took.darkGray)
                     }
             }
-            if isError == true {
+            if isError {
                 Label {
                     Text(errorText)
                         .tookTypo(.regular(.small))
