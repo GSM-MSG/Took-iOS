@@ -104,15 +104,29 @@ public struct TookTextField_Previews: PreviewProvider {
             ZStack {
                 TookImage(.background)
                     .ignoresSafeArea()
+
                 ScrollView {
-                    TookTextField("제목입니당", placeholderText: "뭐라도 입력해주세요", text: .constant(""), isError: false)
+                    TookTextField(
+                        "제목입니당",
+                        placeholderText: "뭐라도 입력해주세요",
+                        text: .constant(""),
+                        isError: false
+                    )
+
                     TookTextField(
                         "제목입니당",
                         placeholderText: "뭐라도 입력해주세요",
                         text: .constant("123123123312113"),
                         isError: false
                     )
-                    TookTextField("제목입니당", placeholderText: "뭐라도 입력해주세요", text: .constant(""), isError: false)
+
+                    TookTextField(
+                        "제목입니당",
+                        placeholderText: "뭐라도 입력해주세요",
+                        text: .constant(""),
+                        isError: false
+                    )
+
                     TookTextField(
                         "제목입니당",
                         placeholderText: "뭐라도 입력해주세요",
