@@ -43,6 +43,7 @@ public struct CardListView: View {
                             }
                         }
                         .padding(.horizontal, 16)
+                        .padding(.top, 24)
                     }
                     .zIndex(1)
                 }
