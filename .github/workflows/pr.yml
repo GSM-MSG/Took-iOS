@@ -25,7 +25,7 @@ jobs:
       
     - name: project Generate
       run: |
-        needle generate Projects/App/Sources/Application/NeedleGenerated.swift ../
+        needle generate Projects/App/Sources/Application/NeedleGenerated.swift .
         make generate
       
     - name: build
