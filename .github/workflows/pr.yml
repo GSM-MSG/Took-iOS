@@ -6,7 +6,7 @@ on:
 
 jobs:
   ci:
-    runs-on: macos-latest
+    runs-on: macos-12
 
     steps:
     - uses: swift-actions/setup-swift@v1
@@ -27,7 +27,9 @@ jobs:
       run: make generate
       
     - name: build
-      run: tuist build
+      run: |
+        swift --version
+        tuist build
       
     - name: test
       run: tuist test
