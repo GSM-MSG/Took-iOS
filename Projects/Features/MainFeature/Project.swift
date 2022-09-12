@@ -8,6 +8,7 @@ let project = Project.makeModule(
         .Project.Features.CommonFeature,
         .Project.Features.CardFeature,
         .Project.Features.CardListFeature,
-        .Project.Features.SettingFeature
+        .Project.Features.SettingFeature,
+        .Project.Features.NewCardFeature
     ]
 )

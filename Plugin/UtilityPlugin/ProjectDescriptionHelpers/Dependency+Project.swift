@@ -11,6 +11,7 @@ public extension TargetDependency {
 }
 
 public extension TargetDependency.Project.Features {
+    static let NewCardFeature = TargetDependency.feature(name: "NewCardFeature")
     static let SettingFeature = TargetDependency.feature(name: "SettingFeature")
     static let CardListFeature = TargetDependency.feature(name: "CardListFeature")
     static let CardFeature = TargetDependency.feature(name: "CardFeature")
