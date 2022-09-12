@@ -12,10 +12,14 @@ public enum JwtTokenType: String {
     case none
 }
 
-struct JwtPlugin: PluginType {
-    private let keychain = Keychain()
+public struct JwtPlugin: PluginType {
+    private let keychain: Keychain
 
-    func prepare(
+    public init(keychain: Keychain) {
+        self.keychain = keychain
+    }
+
+    public func prepare(
         _ request: URLRequest,
         target: TargetType
     ) -> URLRequest {
@@ -31,7 +35,7 @@ struct JwtPlugin: PluginType {
         return req
     }
 
-    func didReceive(
+    public func didReceive(
         _ result: Result<Response, MoyaError>,
         target: TargetType
     ) {
