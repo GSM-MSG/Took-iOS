@@ -27,9 +27,7 @@ jobs:
       run: make generate
       
     - name: build
-      run: |
-        swift --version
-        tuist build
+      run: tuist build
       
     - name: test
       run: tuist test
