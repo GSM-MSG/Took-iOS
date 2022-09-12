@@ -1,2 +1,2 @@
 excluded:
-  NeedleGenerated.swift
+  - "**/*/NeedleGenerated.swift"
