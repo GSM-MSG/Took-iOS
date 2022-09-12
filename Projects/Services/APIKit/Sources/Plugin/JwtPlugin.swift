@@ -15,7 +15,7 @@ public enum JwtTokenType: String {
 public struct JwtPlugin: PluginType {
     private let keychain: Keychain
 
-    public init(keychain: Keychain) {
+    public init(keychain: any Keychain) {
         self.keychain = keychain
     }
 
