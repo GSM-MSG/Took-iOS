@@ -11,14 +11,14 @@ public struct TookTextField: View {
 
     public init(
         _ labelText: String = "",
-        placeHolderText: String = "",
+        placeholderText: String = "",
         text: Binding<String>,
         isError: Bool = false,
         errorText: String = "",
         onCommit: @escaping () -> Void = {}
     ) {
         self.labelText = labelText
-        self.placeholderText = placeHolderText
+        self.placeholderText = placeholderText
         self._text = text
         self.isError = isError
         self.errorText = errorText
@@ -72,19 +72,20 @@ struct TookTextFieldClearModifier: ViewModifier {
         HStack {
             content
             if !text.isEmpty {
-                    Button(
-                        action: { self.text = "" },
-                        label: {
-                            Image(systemName: "xmark.circle.fill")
-                                .foregroundColor(Color.Took.gray)
-                        }
-                    )
-                    .padding(.trailing)
+                Button(
+                    action: { self.text = "" },
+                    label: {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(Color.Took.gray)
+                    }
+                )
+                .padding(.trailing)
             }
         }
     }
 }
-public struct PlaceholderStyle: ViewModifier {
+
+struct PlaceholderStyle: ViewModifier {
     var placeholder: String
 
     public func body(content: Content) -> some View {
