@@ -3,10 +3,10 @@ import SwiftUI
 public struct TookTextField: View {
     var labelText: String
     var placeholderText: String
-    var isError: Bool
-    var onCommit: () -> Void
-    var errorText: String
     @Binding var text: String
+    var isError: Bool
+    var errorText: String
+    var onCommit: () -> Void
     @FocusState var isFocus: Bool
 
     public init(
@@ -51,7 +51,7 @@ public struct TookTextField: View {
                             .strokeBorder(Color.Took.darkGray)
                     }
             }
-            if isError == true {
+            if isError {
                 Label {
                     Text(errorText)
                         .tookTypo(.regular(.small))
