@@ -79,9 +79,3 @@ public struct CardListView: View {
         }
     }
 }
-
-struct CardListView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardListView()
-    }
-}
