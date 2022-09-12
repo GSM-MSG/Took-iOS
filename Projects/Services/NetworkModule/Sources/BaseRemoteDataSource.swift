@@ -23,8 +23,10 @@ class BaseRemoteDataSource<API: TookAPI> {
         }
     }
 
-    func request(_ api: API) async throws -> Response {
-        try await checkIsApiNeedsAuth(api) ? authorizedRequest(api) : defaultRequest(api)
+    @discardableResult
+    func request<T: Decodable>(_ api: API, dto: T.Type) async throws -> T {
+        let res = try await checkIsApiNeedsAuth(api) ? authorizedRequest(api) : defaultRequest(api)
+        return try decoder.decode(dto, from: res.data)
     }
 }
 
