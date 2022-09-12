@@ -35,8 +35,8 @@ public struct CardListView: View {
                                 .frame(width: (proxy.size.width / 2) - 16)
                                 .frame(
                                     height: isVertical ?
-                                    ((proxy.size.width / 2) - 16) * 0.5988 :
-                                        ((proxy.size.width / 2) - 16) * 1.4161
+                                        ((proxy.size.width / 2) - 16) * 0.6 :
+                                        ((proxy.size.width / 2) - 16) * 1.65
                                 )
                                 .background(Color.Took.white)
                                 .cornerRadius(4)
