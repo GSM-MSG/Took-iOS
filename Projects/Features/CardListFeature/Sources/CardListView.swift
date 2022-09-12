@@ -7,8 +7,8 @@ public struct CardListView: View {
     var isVertical: Bool {
         viewModel.cardStyle == .vertical
     }
-
     let columns = Array(repeating: GridItem(.flexible()), count: 2)
+
     public init() {
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
