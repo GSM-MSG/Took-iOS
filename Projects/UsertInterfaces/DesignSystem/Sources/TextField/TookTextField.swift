@@ -1,62 +1,59 @@
 import SwiftUI
 
 public struct TookTextField: View {
-    var textFieldHeader: String
-    var placeHolderText: String
+    var labelText: String
+    var placeholderText: String
     var isError: Bool
     var buttonAction: () -> Void
     var onCommit: () -> Void
-    @FocusState var ifFocus: Bool
-    @Binding var text: String
     var errorText: String
+    @Binding var text: String
+    @FocusState var isFocus: Bool
 
     public init(
         _ textFieldHeader: String = "",
-        _ placeHolderText: String = "",
+        placeHolderText: String = "",
         isError: Bool = false,
-        buttonAction: @escaping () -> Void = {},
-        onCommit: @escaping () -> Void = {},
+        errorText: String = "",
         text: Binding<String>,
-        errorText: String = ""
+        buttonAction: @escaping () -> Void = {},
+        onCommit: @escaping () -> Void = {}
     ) {
-        self.textFieldHeader = textFieldHeader
-        self.placeHolderText = placeHolderText
+        self.labelText = textFieldHeader
+        self.placeholderText = placeHolderText
         self.isError = isError
+        self.errorText = errorText
         self.buttonAction = buttonAction
         self.onCommit = onCommit
         self._text = text
-        self.errorText = errorText
     }
 
     public var body: some View {
-        HStack {
-            Text(textFieldHeader)
+        VStack(alignment: .leading) {
+            Text(labelText)
                 .foregroundColor(Color.Took.gray)
                 .tookTypo(.bold(.medium))
-            Spacer()
-        }
-        TextField("", text: $text)
-            .padding()
-            .foregroundColor(Color.Took.white)
-            .modifier(TookTextFieldClearModifier(text: $text))
-            .modifier(PlaceholderStyle( placeholder: placeHolderText))
-            .background(Color.Took.transparencyBoxBg)
-            .onSubmit(onCommit)
-            .cornerRadius(16)
-            .focused($ifFocus)
-            .overlay {
-                if ifFocus {
-                    RoundedRectangle(cornerRadius: 16)
-                        .strokeBorder(RadialGradient.primary)
-                } else if isError {
-                    RoundedRectangle(cornerRadius: 16)
-                        .strokeBorder(Color.Took.error)
-                } else {
-                    RoundedRectangle(cornerRadius: 16)
-                        .strokeBorder(Color.Took.darkGray)
-                }
-        }
-        HStack {
+            TextField("", text: $text)
+                .padding()
+                .foregroundColor(Color.Took.white)
+                .modifier(TookTextFieldClearModifier(text: $text))
+                .modifier(PlaceholderStyle( placeholder: placeholderText))
+                .background(Color.Took.transparencyBoxBg)
+                .onSubmit(onCommit)
+                .cornerRadius(16)
+                .focused($isFocus)
+                .overlay {
+                    if isFocus {
+                        RoundedRectangle(cornerRadius: 16)
+                            .strokeBorder(RadialGradient.primary)
+                    } else if isError {
+                        RoundedRectangle(cornerRadius: 16)
+                            .strokeBorder(Color.Took.error)
+                    } else {
+                        RoundedRectangle(cornerRadius: 16)
+                            .strokeBorder(Color.Took.darkGray)
+                    }
+            }
             if isError == true {
                 Label {
                     Text(errorText)
@@ -66,19 +63,10 @@ public struct TookTextField: View {
                     Image(systemName: "exclamationmark.circle")
                         .foregroundColor(Color.Took.error)
                 }
-                .padding(
-                    EdgeInsets(
-                        top: 0,
-                        leading: 10,
-                        bottom: 0,
-                        trailing: 0
-                    )
-                )
+                .padding(.leading, 10)
             }
-            Spacer()
         }
     }
-
 }
 
 struct TookTextFieldClearModifier: ViewModifier {
@@ -120,10 +108,10 @@ public struct TookTextField_Previews: PreviewProvider {
                 TookImage(.background)
                     .ignoresSafeArea()
                 ScrollView {
-                    TookTextField("제목입니당", "뭐라도 입력해주세요", isError: false, text: .constant(""))
-                    TookTextField("제목입니당", "뭐라도 입력해주세요", isError: false, text: .constant("123123123312113"))
-                    TookTextField("제목입니당", "뭐라도 입력해주세요", isError: false, text: .constant(""))
-                    TookTextField("제목입니당", "뭐라도 입력해주세요", isError: true, text: .constant(""), errorText: "안녕하세요")
+                    TookTextField("제목입니당", placeHolderText: "뭐라도 입력해주세요", isError: false, text: .constant(""))
+                    TookTextField("제목입니당", placeHolderText: "뭐라도 입력해주세요", isError: false, text: .constant("123123123312113"))
+                    TookTextField("제목입니당", placeHolderText: "뭐라도 입력해주세요", isError: false, text: .constant(""))
+                    TookTextField("제목입니당", placeHolderText: "뭐라도 입력해주세요", isError: true, errorText: "안녕하세요", text: .constant(""))
                 }
                 .padding()
             }
