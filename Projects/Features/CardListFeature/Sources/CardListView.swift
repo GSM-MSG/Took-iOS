@@ -19,6 +19,7 @@ public struct CardListView: View {
 
         UINavigationBar.appearance().standardAppearance = appearance
     }
+
     public var body: some View {
         GeometryReader { proxy in
             NavigationView {
