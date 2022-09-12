@@ -61,6 +61,7 @@ private extension JwtPlugin {
             return keychain.load(type: .expiredAt)
         }
     }
+
     func saveToken(token: TokenDTO) {
         keychain.save(type: .accessToken, value: token.accessToken)
         keychain.save(type: .refreshToken, value: token.refreshToken)
