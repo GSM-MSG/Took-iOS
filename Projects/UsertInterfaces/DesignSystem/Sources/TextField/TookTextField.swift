@@ -34,7 +34,7 @@ public struct TookTextField: View {
                 .padding()
                 .foregroundColor(Color.Took.white)
                 .modifier(TookTextFieldClearModifier(text: $text))
-                .modifier(PlaceholderStyle( placeholder: placeholderText))
+                .modifier(PlaceholderStyle(placeholder: placeholderText))
                 .background(Color.Took.transparencyBoxBg)
                 .onSubmit(onCommit)
                 .cornerRadius(16)
