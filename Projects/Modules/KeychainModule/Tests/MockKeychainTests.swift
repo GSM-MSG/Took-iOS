@@ -2,7 +2,6 @@ import XCTest
 @testable import KeychainModule
 
 final class MockKeychainTests: XCTestCase {
-
     var keychain: Keychain!
 
     override func setUp() {
