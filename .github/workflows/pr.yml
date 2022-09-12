@@ -19,6 +19,9 @@ jobs:
         
     - name: get Swift version
       run: swift --version
+      
+    - name: install needle
+      run: brew install needle 
         
     - name: install tuist
       run: curl -Ls https://install.tuist.io | bash
