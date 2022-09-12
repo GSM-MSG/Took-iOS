@@ -30,8 +30,7 @@ let targets: [Target] = [
         scripts: scripts,
         dependencies: [
             .Project.Features.RootFeature,
-            .Project.Service.Data,
-            .Project.Module.ThirdPartyLib
+            .Project.Service.Data
         ],
         settings: .settings(base: Environment.baseSetting)
     ),
