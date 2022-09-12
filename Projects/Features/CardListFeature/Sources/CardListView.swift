@@ -3,7 +3,6 @@ import DesignSystem
 
 public struct CardListView: View {
     @StateObject var viewModel: CardListViewModel = .init()
-
     var isVertical: Bool {
         viewModel.cardStyle == .vertical
     }
