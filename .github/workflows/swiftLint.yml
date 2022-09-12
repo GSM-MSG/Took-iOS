@@ -11,10 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: Remove NeedleGenerated.swift
-        run: rm -rf **/*/NeedleGenerated.swift
         
       - name: GitHub Action for SwiftLint
         uses: norio-nomura/action-swiftlint@3.2.1
         with:
-          args: --config .swiftlint.yml
+          args: --config .swiftlint.yml --force-exclude
