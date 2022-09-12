@@ -52,7 +52,7 @@ extension BusinessCardAPI: TookAPI {
         switch self {
         case .newBusinessCard:
             return [
-                401: .unknown,
+                404: .unknown,
                 500: .unknown
             ]
         case .businessCardList:
