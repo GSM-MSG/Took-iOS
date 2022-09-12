@@ -27,9 +27,11 @@ public struct TookTextField: View {
 
     public var body: some View {
         VStack(alignment: .leading) {
-            Text(labelText)
-                .foregroundColor(Color.Took.gray)
-                .tookTypo(.bold(.medium))
+            if !labelText.isEmpty {
+                Text(labelText)
+                    .foregroundColor(Color.Took.gray)
+                    .tookTypo(.bold(.medium))
+            }
             TextField("", text: $text)
                 .padding()
                 .foregroundColor(Color.Took.white)
@@ -51,7 +53,7 @@ public struct TookTextField: View {
                             .strokeBorder(Color.Took.darkGray)
                     }
             }
-            if isError {
+            if isError && !errorText.isEmpty {
                 Label {
                     Text(errorText)
                         .tookTypo(.regular(.small))
