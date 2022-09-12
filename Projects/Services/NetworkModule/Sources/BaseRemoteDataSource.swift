@@ -16,11 +16,11 @@ class BaseRemoteDataSource<API: TookAPI> {
         provider: MoyaProvider<API>? = nil
     ) {
         self.keychain = keychain
-        if let provider = provider {
-            self.provider = provider
-        } else {
-            self.provider = MoyaProvider(plugins: [JwtPlugin(keychain: keychain), NetworkLoggerPlugin()])
-        }
+        #if DEBUG
+        self.provider = provider ?? MoyaProvider(plugins: [JwtPlugin(keychain: keychain), NetworkLoggerPlugin()])
+        #else
+        self.provider = provider ?? MoyaProvider(plugins: [JwtPlugin(keychain: keychain)])
+        #endif
     }
 
     @discardableResult
