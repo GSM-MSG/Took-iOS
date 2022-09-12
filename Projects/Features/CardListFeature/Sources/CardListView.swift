@@ -29,15 +29,17 @@ public struct CardListView: View {
                     ScrollView(.vertical, showsIndicators: false) {
                         LazyVGrid(columns: columns, spacing: 16) {
                             ForEach(0..<10) { _ in
-                                horizontalCardView()
-                                    .frame(width: (proxy.size.width / 2) - 16)
-                                    .frame(
-                                        height: isVertical ?
-                                        ((proxy.size.width / 2) - 16) * 0.5988 :
+                                VStack {
+                                    Text("A")
+                                }
+                                .frame(width: (proxy.size.width / 2) - 16)
+                                .frame(
+                                    height: isVertical ?
+                                    ((proxy.size.width / 2) - 16) * 0.5988 :
                                         ((proxy.size.width / 2) - 16) * 1.4161
-                                    )
-                                    .background(Color.Took.white)
-                                    .cornerRadius(4)
+                                )
+                                .background(Color.Took.white)
+                                .cornerRadius(4)
                             }
                         }
                         .padding(.horizontal, 16)
@@ -73,14 +75,6 @@ public struct CardListView: View {
                 }
             }
             .navigationViewStyle(.stack)
-        }
-    }
-
-    @ViewBuilder
-    func horizontalCardView() -> some View {
-        VStack {
-            Text("A")
-                .foregroundColor(.white)
         }
     }
 }
