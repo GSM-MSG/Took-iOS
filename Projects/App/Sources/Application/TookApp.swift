@@ -1,5 +1,6 @@
 import SwiftUI
 import NeedleFoundation
+import SignupFeature
 
 @main
 struct TookApp: App {
@@ -10,7 +11,7 @@ struct TookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AppComponent().makeRootView()
+            SignupView(viewModel: .init())
         }
     }
 }

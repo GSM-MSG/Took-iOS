@@ -34,7 +34,7 @@ public struct TookTextField: View {
                 .padding()
                 .foregroundColor(Color.Took.white)
                 .modifier(TookTextFieldClearModifier(text: $text))
-                .modifier(PlaceholderStyle(placeholder: placeholderText))
+                .modifier(PlaceholderStyle(showPlaceholder: text.isEmpty, placeholder: placeholderText))
                 .background(Color.Took.transparencyBoxBg)
                 .onSubmit(onCommit)
                 .cornerRadius(16)
@@ -86,13 +86,16 @@ struct TookTextFieldClearModifier: ViewModifier {
 }
 
 struct PlaceholderStyle: ViewModifier {
+    var showPlaceholder: Bool
     var placeholder: String
 
     public func body(content: Content) -> some View {
         ZStack(alignment: .leading) {
-            Text(placeholder)
-                .foregroundColor(Color.Took.darkGray)
-                .padding()
+            if showPlaceholder {
+                Text(placeholder)
+                    .foregroundColor(Color.Took.darkGray)
+                    .padding()
+            }
             content
         }
     }
