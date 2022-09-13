@@ -29,7 +29,7 @@ public struct TookTextField: View {
         VStack(alignment: .leading) {
             if !labelText.isEmpty {
                 Text(labelText)
-                    .foregroundColor(Color.Took.gray)
+                    .foregroundColor(Color.Took.lightGray)
                     .tookTypo(.bold(.medium))
             }
             TextField("", text: $text)
