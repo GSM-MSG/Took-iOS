@@ -1,6 +1,8 @@
 import Foundation
 
 public struct DefaultKeychain: Keychain {
+    public init() {}
+
     private let service: String = Bundle.main.bundleIdentifier ?? ""
 
     public func save(type: KeychainType, value: String) {

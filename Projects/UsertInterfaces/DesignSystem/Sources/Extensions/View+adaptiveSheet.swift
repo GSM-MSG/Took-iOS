@@ -40,7 +40,7 @@ struct AdaptiveSheet<T: View>: ViewModifier {
                     .onTapGesture {
                         isPresented = false
                     }
-                    .ignoresSafeArea()                
+                    .ignoresSafeArea()
             }
             CustomSheetUI(
                 isPresented: $isPresented,

@@ -4,6 +4,7 @@ import RootFeature
 import MainFeature
 import IntroFeature
 import SignupFeature
+import KeychainModule
 
 final class AppComponent: BootstrapComponent {}
 
@@ -17,11 +18,27 @@ extension AppComponent {
         RootComponent(parent: self)
     }
 
-    public var mainComponent: MainComponent {
-        MainComponent(parent: self)
+    public var keychain: Keychain {
+        shared {
+            DefaultKeychain()
+        }
     }
+}
 
+// MARK: - Intro
+extension AppComponent {
     public var introComponent: IntroComponent {
         IntroComponent(parent: self)
+    }
+
+    public var signupComponent: SignupComponent {
+        SignupComponent(parent: self)
+    }
+}
+
+// MARK: - Main
+extension AppComponent {
+    public var mainComponent: MainComponent {
+        MainComponent(parent: self)
     }
 }
