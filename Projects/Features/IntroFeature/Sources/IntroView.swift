@@ -32,7 +32,7 @@ public struct IntroView: View {
                 .padding(.bottom, 44)
                 .padding(.horizontal, 16)
             }
-            .navigate(to: signupComponent.makeView(), when: $isNavigateSignup)
+            .navigate(to: DeferView { signupComponent.makeView() }, when: $isNavigateSignup)
             .navigate(to: Text("Signin"), when: $isNavigateSignin)
         }
     }

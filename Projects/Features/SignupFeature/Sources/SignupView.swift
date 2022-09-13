@@ -62,10 +62,14 @@ public struct SignupView: View {
             .padding(.horizontal, 16)
             .padding(.top, 32)
         }
-        .configBackButton(dismiss: dismiss)
-        .adaptiveSheet(isPresented: $viewModel.isPresentedTerms, detents: [.medium()], content: {
-            termsSheetView()
-        })
+        .configBackButton(willDismiss: {
+            viewModel.isPresentedTerms = false
+        }, dismiss: dismiss)
+        .sheetWithDetents(
+            isPresented: $viewModel.isPresentedTerms,
+            detents: [.medium()], content: {
+                termsSheetView()
+            })
         .onAppear {
             focusField = .email
         }

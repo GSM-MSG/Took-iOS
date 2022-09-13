@@ -21,16 +21,16 @@ private func parent1(_ component: NeedleFoundation.Scope) -> NeedleFoundation.Sc
 
 #if !NEEDLE_DYNAMIC
 
-private class SignupDependency1ff7d1355204bb65e850Provider: SignupDependency {
+private class SignupDependencya98c3663fd2f7b093947Provider: SignupDependency {
 
 
     init() {
 
     }
 }
-/// ^->AppComponent->SignupComponent
-private func factory86602ff0d0dbaf2cb017e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
-    return SignupDependency1ff7d1355204bb65e850Provider()
+/// ^->AppComponent->IntroComponent->SignupComponent
+private func factory98d7636069824eeba96ee3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return SignupDependencya98c3663fd2f7b093947Provider()
 }
 private class MainDependency7c6a5b4738b211b8e155Provider: MainDependency {
 
@@ -60,17 +60,15 @@ private func factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5(_ component: Needle
     return RootDependency3944cc797a4a88956fb5Provider(appComponent: parent1(component) as! AppComponent)
 }
 private class IntroDependencye04a89d39c733d937499Provider: IntroDependency {
-    var signupComponent: SignupComponent {
-        return appComponent.signupComponent
-    }
-    private let appComponent: AppComponent
-    init(appComponent: AppComponent) {
-        self.appComponent = appComponent
+
+
+    init() {
+
     }
 }
 /// ^->AppComponent->IntroComponent
-private func factoryaf0e1f54bae4c77ad4acf47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
-    return IntroDependencye04a89d39c733d937499Provider(appComponent: parent1(component) as! AppComponent)
+private func factoryaf0e1f54bae4c77ad4ace3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return IntroDependencye04a89d39c733d937499Provider()
 }
 
 #else
@@ -80,7 +78,6 @@ extension AppComponent: Registration {
         localTable["rootComponent-RootComponent"] = { self.rootComponent as Any }
         localTable["mainComponent-MainComponent"] = { self.mainComponent as Any }
         localTable["introComponent-IntroComponent"] = { self.introComponent as Any }
-        localTable["signupComponent-SignupComponent"] = { self.signupComponent as Any }
     }
 }
 extension SignupComponent: Registration {
@@ -101,7 +98,8 @@ extension RootComponent: Registration {
 }
 extension IntroComponent: Registration {
     public func registerItems() {
-        keyPathToName[\IntroDependency.signupComponent] = "signupComponent-SignupComponent"
+
+        localTable["signupComponent-SignupComponent"] = { self.signupComponent as Any }
     }
 }
 
@@ -121,10 +119,10 @@ private func registerProviderFactory(_ componentPath: String, _ factory: @escapi
 
 private func register1() {
     registerProviderFactory("^->AppComponent", factoryEmptyDependencyProvider)
-    registerProviderFactory("^->AppComponent->SignupComponent", factory86602ff0d0dbaf2cb017e3b0c44298fc1c149afb)
+    registerProviderFactory("^->AppComponent->IntroComponent->SignupComponent", factory98d7636069824eeba96ee3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->MainComponent", factoryc9274e46e78e70f29c54e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->RootComponent", factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5)
-    registerProviderFactory("^->AppComponent->IntroComponent", factoryaf0e1f54bae4c77ad4acf47b58f8f304c97af4d5)
+    registerProviderFactory("^->AppComponent->IntroComponent", factoryaf0e1f54bae4c77ad4ace3b0c44298fc1c149afb)
 }
 #endif
 

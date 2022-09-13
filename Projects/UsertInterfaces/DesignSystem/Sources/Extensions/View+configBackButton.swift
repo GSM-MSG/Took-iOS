@@ -1,11 +1,12 @@
 import SwiftUI
 
 public extension View {
-    func configBackButton(dismiss: DismissAction) -> some View {
+    func configBackButton(willDismiss: @escaping () -> Void = {}, dismiss: DismissAction) -> some View {
         self
             .toolbar {
                 ToolbarItemGroup(placement: .navigationBarLeading) {
                     Button {
+                        willDismiss()
                         dismiss()
                     } label: {
                         Image(systemName: "chevron.left")

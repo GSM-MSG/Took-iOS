@@ -24,8 +24,4 @@ extension AppComponent {
     public var introComponent: IntroComponent {
         IntroComponent(parent: self)
     }
-
-    public var signupComponent: SignupComponent {
-        SignupComponent(parent: self)
-    }
 }
