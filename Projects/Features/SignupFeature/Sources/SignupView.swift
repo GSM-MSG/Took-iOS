@@ -40,11 +40,29 @@ public struct SignupView: View {
                 .focused($focusField, equals: .password)
 
                 Spacer()
+
+                VStack(spacing: 16) {
+                    TookButton(text: "회원가입", style: .default) {
+                    }
+                    .disabled(viewModel.isFormEmpty)
+
+                    NavigationLink {
+                        Text("Signin")
+                    } label: {
+                        Text("이미 계정이 있으신가요? 로그인")
+                            .tookTypo(.regular(.small), color: .Took.gray)
+                    }
+                }
+                .padding(.bottom, 14)
             }
             .padding(.horizontal, 16)
             .padding(.top, 32)
         }
+        .onAppear {
+            focusField = .email
+        }
         .navigationTitle("회원가입")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
