@@ -17,7 +17,7 @@ extension TookError: LocalizedError {
         case let .custom(message, _):
             return message
         case .notVerifiedEmail:
-            return "이메일이 인증되지 않았습니다"
+            return "인증되지 않은 이메일입니다"
         case .alreadyExistEmail:
             return "이미 존재하는 이메일입니다"
         }
