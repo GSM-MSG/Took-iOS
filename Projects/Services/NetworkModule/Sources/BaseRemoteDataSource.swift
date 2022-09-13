@@ -5,6 +5,7 @@ import ErrorModule
 import Foundation
 import Utility
 
+// swiftlint: disable force_cast
 class BaseRemoteDataSource<API: TookAPI> {
     private let keychain: Keychain
     private let provider: MoyaProvider<API>
@@ -44,11 +45,10 @@ private extension BaseRemoteDataSource {
 
     func authorizedRequest(_ api: API) async throws -> Response {
         for _ in 0..<maxRetryCount {
-            if checkTokenIsNotExpired() { try await refreshToken() }
             do {
                 return try await performRequest(api)
             } catch {
-                try await refreshToken()
+                if checkTokenIsExpired() { try await refreshToken() }
                 continue
             }
         }
@@ -74,12 +74,12 @@ private extension BaseRemoteDataSource {
     func checkIsApiNeedsAuth(_ api: API) -> Bool {
         api.jwtTokenType == .accessToken
     }
-    func checkTokenIsNotExpired() -> Bool {
+    func checkTokenIsExpired() -> Bool {
         let expired = keychain.load(type: .expiredAt).toTookDate()
-        return Date() < expired
+        return Date() > expired
     }
 
     func refreshToken() async throws {
-        // TODO: 토큰 리프레시 API request
+        _ = try await performRequest(AuthAPI.refresh as! API)
     }
 }
