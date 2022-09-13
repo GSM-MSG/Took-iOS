@@ -2,9 +2,17 @@ import SwiftUI
 
 public struct TookSubCheckbox: View {
     @Binding var isOn: Bool
+    let willChange: (Bool) -> Void
+    let didChange: (Bool) -> Void
 
-    public init(isOn: Binding<Bool>) {
-        self._isOn = isOn
+    public init(
+        isOn: Binding<Bool>,
+        willChange: @escaping (Bool) -> Void = { _ in },
+        didChange: @escaping (Bool) -> Void = { _ in }
+    ) {
+        _isOn = isOn
+        self.willChange = willChange
+        self.didChange = didChange
     }
 
     public var body: some View {
@@ -12,9 +20,11 @@ public struct TookSubCheckbox: View {
             .toggleStyle(TookSubCheckboxStyle())
             .animation(.easeInOut, value: isOn)
             .onTapGesture {
+                willChange(isOn)
                 withAnimation {
                     isOn.toggle()
                 }
+                didChange(isOn)
             }
     }
 }
