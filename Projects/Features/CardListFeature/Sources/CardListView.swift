@@ -10,15 +10,6 @@ public struct CardListView: View {
 
     public init(viewModel: CardListViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
-
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithTransparentBackground()
-        appearance.titleTextAttributes = [
-            .foregroundColor: DesignSystemAsset.Colors.white.color,
-            .font: UIFont.systemFont(ofSize: 17, weight: .bold)
-        ]
-
-        UINavigationBar.appearance().standardAppearance = appearance
     }
 
     public var body: some View {
