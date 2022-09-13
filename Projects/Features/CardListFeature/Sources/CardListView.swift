@@ -2,13 +2,15 @@ import SwiftUI
 import DesignSystem
 
 public struct CardListView: View {
-    @StateObject var viewModel: CardListViewModel = .init()
+    @StateObject var viewModel: CardListViewModel
     var isVertical: Bool {
         viewModel.cardStyle == .vertical
     }
     let columns = Array(repeating: GridItem(.flexible()), count: 2)
 
-    public init() {
+    public init(viewModel: CardListViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+
         let appearance = UINavigationBarAppearance()
         appearance.configureWithTransparentBackground()
         appearance.titleTextAttributes = [
