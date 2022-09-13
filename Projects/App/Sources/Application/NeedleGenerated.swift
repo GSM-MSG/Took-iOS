@@ -9,6 +9,7 @@ import MainFeature
 import NeedleFoundation
 import NetworkModule
 import RootFeature
+import SigninFeature
 import SignupFeature
 import SwiftUI
 
@@ -66,6 +67,17 @@ private class RootDependency3944cc797a4a88956fb5Provider: RootDependency {
 private func factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
     return RootDependency3944cc797a4a88956fb5Provider(appComponent: parent1(component) as! AppComponent)
 }
+private class SigninDependencyde06a9d0b22764487733Provider: SigninDependency {
+
+
+    init() {
+
+    }
+}
+/// ^->AppComponent->SigninComponent
+private func factory2882a056d84a613debcce3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return SigninDependencyde06a9d0b22764487733Provider()
+}
 private class IntroDependencye04a89d39c733d937499Provider: IntroDependency {
     var signupComponent: SignupComponent {
         return appComponent.signupComponent
@@ -90,6 +102,7 @@ extension AppComponent: Registration {
         localTable["sceneStateModel-SceneStateModel"] = { self.sceneStateModel as Any }
         localTable["introComponent-IntroComponent"] = { self.introComponent as Any }
         localTable["signupComponent-SignupComponent"] = { self.signupComponent as Any }
+        localTable["signinComponent-SigninComponent"] = { self.signinComponent as Any }
         localTable["mainComponent-MainComponent"] = { self.mainComponent as Any }
         localTable["signinUseCase-SigninUseCase"] = { self.signinUseCase as Any }
         localTable["signupUseCase-SignupUseCase"] = { self.signupUseCase as Any }
@@ -112,6 +125,11 @@ extension RootComponent: Registration {
         keyPathToName[\RootDependency.introComponent] = "introComponent-IntroComponent"
         keyPathToName[\RootDependency.mainComponent] = "mainComponent-MainComponent"
         keyPathToName[\RootDependency.sceneStateModel] = "sceneStateModel-SceneStateModel"
+    }
+}
+extension SigninComponent: Registration {
+    public func registerItems() {
+
     }
 }
 extension IntroComponent: Registration {
@@ -139,6 +157,7 @@ private func register1() {
     registerProviderFactory("^->AppComponent->SignupComponent", factory86602ff0d0dbaf2cb017e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->MainComponent", factoryc9274e46e78e70f29c54e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->RootComponent", factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5)
+    registerProviderFactory("^->AppComponent->SigninComponent", factory2882a056d84a613debcce3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->IntroComponent", factoryaf0e1f54bae4c77ad4acf47b58f8f304c97af4d5)
 }
 #endif
