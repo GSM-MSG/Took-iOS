@@ -8,7 +8,7 @@ public struct SecureTookTextField: View {
     var errorText: String
     var onCommit: () -> Void
     @FocusState var isFocus: Bool
-    @State var isSecure = false
+    @State var isSecure = true
 
     public init(
         _ labelText: String = "",
@@ -33,26 +33,50 @@ public struct SecureTookTextField: View {
                     .foregroundColor(Color.Took.lightGray)
                     .tookTypo(.bold(.medium))
             }
-            TextField("", text: $text)
-                .padding()
-                .foregroundColor(Color.Took.white)
-                .modifier(TookTextFieldSecureModifier(isSecure: $isSecure))
-                .modifier(PlaceholderStyle(placeholder: placeholderText))
-                .background(Color.Took.transparencyBoxBg)
-                .onSubmit(onCommit)
-                .cornerRadius(16)
-                .focused($isFocus)
-                .overlay {
-                    if isFocus {
-                        RoundedRectangle(cornerRadius: 16)
-                            .strokeBorder(RadialGradient.primary)
-                    } else if isError {
-                        RoundedRectangle(cornerRadius: 16)
-                            .strokeBorder(Color.Took.error)
-                    } else {
-                        RoundedRectangle(cornerRadius: 16)
-                            .strokeBorder(Color.Took.darkGray)
-                    }
+            if isSecure {
+                SecureField("", text: $text)
+                    .padding()
+                    .foregroundColor(Color.Took.white)
+                    .modifier(TookTextFieldSecureModifier(isSecure: $isSecure))
+                    .modifier(PlaceholderStyle(showPlaceholder: text.isEmpty, placeholder: placeholderText))
+                    .background(Color.Took.transparencyBoxBg)
+                    .onSubmit(onCommit)
+                    .cornerRadius(16)
+                    .focused($isFocus)
+                    .overlay {
+                        if isFocus {
+                            RoundedRectangle(cornerRadius: 16)
+                                .strokeBorder(RadialGradient.primary)
+                        } else if isError {
+                            RoundedRectangle(cornerRadius: 16)
+                                .strokeBorder(Color.Took.error)
+                        } else {
+                            RoundedRectangle(cornerRadius: 16)
+                                .strokeBorder(Color.Took.darkGray)
+                        }
+                }
+            } else {
+                TextField("", text: $text)
+                    .padding()
+                    .foregroundColor(Color.Took.white)
+                    .modifier(TookTextFieldSecureModifier(isSecure: $isSecure))
+                    .modifier(PlaceholderStyle(showPlaceholder: text.isEmpty, placeholder: placeholderText))
+                    .background(Color.Took.transparencyBoxBg)
+                    .onSubmit(onCommit)
+                    .cornerRadius(16)
+                    .focused($isFocus)
+                    .overlay {
+                        if isFocus {
+                            RoundedRectangle(cornerRadius: 16)
+                                .strokeBorder(RadialGradient.primary)
+                        } else if isError {
+                            RoundedRectangle(cornerRadius: 16)
+                                .strokeBorder(Color.Took.error)
+                        } else {
+                            RoundedRectangle(cornerRadius: 16)
+                                .strokeBorder(Color.Took.darkGray)
+                        }
+                }
             }
             if isError && !errorText.isEmpty {
                 Label {

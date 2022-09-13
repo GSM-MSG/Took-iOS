@@ -22,10 +22,8 @@ public struct RootView: View {
         switch sceneStateModel.sceneState {
         case .intro:
             introBuilder.makeView()
-                .environmentObject(sceneStateModel)
         case .main:
             mainBuilder.makeView()
-                .environmentObject(sceneStateModel)
         }
     }
 }

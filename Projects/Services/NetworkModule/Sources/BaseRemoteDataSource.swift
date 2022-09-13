@@ -6,14 +6,14 @@ import Foundation
 import Utility
 
 // swiftlint: disable force_cast
-class BaseRemoteDataSource<API: TookAPI> {
+public class BaseRemoteDataSource<API: TookAPI> {
     private let keychain: Keychain
     private let provider: MoyaProvider<API>
     private let decoder = JSONDecoder()
-    private let maxRetryCount = 3
+    private let maxRetryCount = 2
 
-    init(
-        keychain: Keychain,
+    public init(
+        keychain: any Keychain,
         provider: MoyaProvider<API>? = nil
     ) {
         self.keychain = keychain
