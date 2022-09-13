@@ -10,10 +10,6 @@ public final class AuthRemoteDataSource: BaseRemoteDataSource<AuthAPI> {
         try await request(.signup(req), dto: NoResponse.self)
     }
 
-    public func refresh() async throws {
-        try await request(.refresh, dto: NoResponse.self)
-    }
-
     public func logout() async throws {
         try await request(.logout, dto: NoResponse.self)
     }
