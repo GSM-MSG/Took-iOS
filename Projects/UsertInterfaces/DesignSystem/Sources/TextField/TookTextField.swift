@@ -53,19 +53,14 @@ public struct TookTextField: View {
                             .strokeBorder(Color.Took.darkGray)
                     }
             }
-            if isError {
-                if !errorText.isEmpty {
-                    Label {
-                        Text(errorText)
-                            .tookTypo(.regular(.small))
-                            .foregroundColor(Color.Took.error)
-                    } icon: {
-                        Image(systemName: "exclamationmark.circle")
-                            .foregroundColor(Color.Took.error)
-                    }
-                } else {
-                    EmptyView()
+            if isError && !errorText.isEmpty {
+                Label {
+                    Text(errorText)
+                        .tookTypo(.regular(.small))
+                } icon: {
+                    Image(systemName: "exclamationmark.circle")
                 }
+                .foregroundColor(Color.Took.error)
             }
         }
     }
@@ -143,6 +138,7 @@ public struct TookTextField_Previews: PreviewProvider {
                 }
                 .padding()
             }
+            .previewInterfaceOrientation(.portrait)
         }
     }
 }
