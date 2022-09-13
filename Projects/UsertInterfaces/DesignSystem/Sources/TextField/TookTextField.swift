@@ -53,14 +53,18 @@ public struct TookTextField: View {
                             .strokeBorder(Color.Took.darkGray)
                     }
             }
-            if isError && !errorText.isEmpty {
-                Label {
-                    Text(errorText)
-                        .tookTypo(.regular(.small))
-                        .foregroundColor(Color.Took.error)
-                } icon: {
-                    Image(systemName: "exclamationmark.circle")
-                        .foregroundColor(Color.Took.error)
+            if isError {
+                if !errorText.isEmpty {
+                    Label {
+                        Text(errorText)
+                            .tookTypo(.regular(.small))
+                            .foregroundColor(Color.Took.error)
+                    } icon: {
+                        Image(systemName: "exclamationmark.circle")
+                            .foregroundColor(Color.Took.error)
+                    }
+                } else {
+                    EmptyView()
                 }
             }
         }
