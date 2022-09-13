@@ -65,44 +65,18 @@ public struct SignupView: View {
         .configBackButton(willDismiss: {
             viewModel.isPresentedTerms = false
         }, dismiss: dismiss)
-        .adaptiveSheet(isPresented: $viewModel.isPresentedTerms, detents: [.medium()]) {
-            TestView()
+        .adaptiveSheet(isPresented: $viewModel.isPresentedTerms, detents: [.medium(), .large()]) {
+            TermsView {
+                viewModel.isPresentedTerms = false
+                viewModel.isNavigateToVerify.toggle()
+            }
         }
         .onAppear {
             focusField = .email
         }
         .navigationTitle("회원가입")
         .navigationBarTitleDisplayMode(.inline)
-    }
-
-    @ViewBuilder
-    func termsSheetView() -> some View {
-        VStack(alignment: .leading) {
-            Text("약관동의")
-                .tookTypo(.bold(.extraLarge), color: .Took.black)
-                .padding(.top, 28)
-
-            HStack(spacing: 8) {
-                TookCheckbox(isOn: $viewModel.isAgreedAllTerms)
-                Text("약관 전체동의")
-                    .tookTypo(.medium(.large), color: .Took.black)
-                Spacer()
-            }
-
-            Spacer()
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .padding(.horizontal, 32)
-        .background(Color.Took.white)
-    }
-}
-
-struct TestView: View {
-    @State var isOn = false
-    var body: some View {
-        VStack {
-            TookCheckbox(isOn: $isOn)
-        }
+        .navigate(to: Text("Verify"), when: $viewModel.isNavigateToVerify)
     }
 }
 

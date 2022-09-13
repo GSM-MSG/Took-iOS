@@ -35,6 +35,13 @@ struct AdaptiveSheet<T: View>: ViewModifier {
     func body(content: Content) -> some View {
         ZStack {
             content
+            if isPresented {
+                Color.Took.black.opacity(0.4)
+                    .onTapGesture {
+                        isPresented = false
+                    }
+                    .ignoresSafeArea()                
+            }
             CustomSheetUI(
                 isPresented: $isPresented,
                 detents: detents,
