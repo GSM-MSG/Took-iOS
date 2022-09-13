@@ -19,17 +19,12 @@ jobs:
         
     - name: get Swift version
       run: swift --version
-      
-    - name: install needle
-      run: brew install needle 
         
     - name: install tuist
       run: curl -Ls https://install.tuist.io | bash
       
     - name: project Generate
-      run: |
-        needle generate Projects/App/Sources/Application/NeedleGenerated.swift .
-        make generate
+      run: make generate
       
     - name: build
       run: tuist build
