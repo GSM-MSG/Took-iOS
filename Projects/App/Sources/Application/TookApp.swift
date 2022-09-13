@@ -11,8 +11,7 @@ struct TookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            CardListView(viewModel: .init())
-//            AppComponent().makeRootView()
+            AppComponent().makeRootView()
         }
     }
 }
