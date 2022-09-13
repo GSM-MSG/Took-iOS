@@ -8,6 +8,7 @@ public struct AuthRepositoryImpl: AuthRepository {
     public init(authRemoteDataSource: any AuthRemoteDataSource) {
         self.authRemoteDataSource = authRemoteDataSource
     }
+
     public func signin(req: SigninRequestDTO) async throws {
         try await authRemoteDataSource.signin(req: req)
     }
