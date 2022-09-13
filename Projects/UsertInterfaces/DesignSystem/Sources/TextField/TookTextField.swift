@@ -27,9 +27,11 @@ public struct TookTextField: View {
 
     public var body: some View {
         VStack(alignment: .leading) {
-            Text(labelText)
-                .foregroundColor(Color.Took.gray)
-                .tookTypo(.bold(.medium))
+            if !labelText.isEmpty {
+                Text(labelText)
+                    .foregroundColor(Color.Took.lightGray)
+                    .tookTypo(.bold(.medium))
+            }
             TextField("", text: $text)
                 .padding()
                 .foregroundColor(Color.Took.white)
@@ -51,15 +53,14 @@ public struct TookTextField: View {
                             .strokeBorder(Color.Took.darkGray)
                     }
             }
-            if isError {
+            if isError && !errorText.isEmpty {
                 Label {
                     Text(errorText)
                         .tookTypo(.regular(.small))
-                        .foregroundColor(Color.Took.error)
                 } icon: {
                     Image(systemName: "exclamationmark.circle")
-                        .foregroundColor(Color.Took.error)
                 }
+                .foregroundColor(Color.Took.error)
             }
         }
     }
@@ -107,14 +108,40 @@ public struct TookTextField_Previews: PreviewProvider {
             ZStack {
                 TookImage(.background)
                     .ignoresSafeArea()
+
                 ScrollView {
-                    TookTextField("제목입니당", placeholderText: "뭐라도 입력해주세요", text: .constant(""), isError: false)
-                    TookTextField("제목입니당", placeholderText: "뭐라도 입력해주세요", text: .constant("123123123312113"), isError: false)
-                    TookTextField("제목입니당", placeholderText: "뭐라도 입력해주세요", text: .constant(""), isError: false)
-                    TookTextField("제목입니당", placeholderText: "뭐라도 입력해주세요", text: .constant(""), isError: true, errorText: "안녕하세요")
+                    TookTextField(
+                        "제목입니당",
+                        placeholderText: "뭐라도 입력해주세요",
+                        text: .constant(""),
+                        isError: false
+                    )
+
+                    TookTextField(
+                        "제목입니당",
+                        placeholderText: "뭐라도 입력해주세요",
+                        text: .constant("123123123312113"),
+                        isError: false
+                    )
+
+                    TookTextField(
+                        "제목입니당",
+                        placeholderText: "뭐라도 입력해주세요",
+                        text: .constant(""),
+                        isError: false
+                    )
+
+                    TookTextField(
+                        "제목입니당",
+                        placeholderText: "뭐라도 입력해주세요",
+                        text: .constant(""),
+                        isError: true,
+                        errorText: "안녕하세요"
+                    )
                 }
                 .padding()
             }
+            .previewInterfaceOrientation(.portrait)
         }
     }
 }

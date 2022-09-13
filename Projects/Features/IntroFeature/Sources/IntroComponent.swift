@@ -1,15 +1,11 @@
 import NeedleFoundation
 import SwiftUI
+import CommonFeature
 
 public protocol IntroDependency: Dependency {
 }
 
-public protocol IntroBuilder {
-    associatedtype ViewType: View
-    func makeView() -> ViewType
-}
-
-public final class IntroComponent: Component<IntroDependency>, IntroBuilder {
+public final class IntroComponent: Component<IntroDependency>, ComponentBuilder {
     public func makeView() -> some View {
         IntroView()
     }

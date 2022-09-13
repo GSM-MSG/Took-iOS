@@ -20,38 +20,43 @@ private func parent1(_ component: NeedleFoundation.Scope) -> NeedleFoundation.Sc
 
 #if !NEEDLE_DYNAMIC
 
-private class MainDependency48395af54bd2fa1ccd92Provider: MainDependency {
+private class MainDependency7c6a5b4738b211b8e155Provider: MainDependency {
 
 
     init() {
 
     }
 }
-/// ^->AppComponent->RootComponent->MainComponent
-private func factory8c7fc8c34a96d31e2d1fe3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
-    return MainDependency48395af54bd2fa1ccd92Provider()
+/// ^->AppComponent->MainComponent
+private func factoryc9274e46e78e70f29c54e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return MainDependency7c6a5b4738b211b8e155Provider()
 }
 private class RootDependency3944cc797a4a88956fb5Provider: RootDependency {
-
-
-    init() {
-
+    var introComponent: IntroComponent {
+        return appComponent.introComponent
+    }
+    var mainComponent: MainComponent {
+        return appComponent.mainComponent
+    }
+    private let appComponent: AppComponent
+    init(appComponent: AppComponent) {
+        self.appComponent = appComponent
     }
 }
 /// ^->AppComponent->RootComponent
-private func factory264bfc4d4cb6b0629b40e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
-    return RootDependency3944cc797a4a88956fb5Provider()
+private func factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return RootDependency3944cc797a4a88956fb5Provider(appComponent: parent1(component) as! AppComponent)
 }
-private class IntroDependency72cb5c3a765f7003bf09Provider: IntroDependency {
+private class IntroDependencye04a89d39c733d937499Provider: IntroDependency {
 
 
     init() {
 
     }
 }
-/// ^->AppComponent->RootComponent->IntroComponent
-private func factoryf95bd3e99343a145d817e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
-    return IntroDependency72cb5c3a765f7003bf09Provider()
+/// ^->AppComponent->IntroComponent
+private func factoryaf0e1f54bae4c77ad4ace3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return IntroDependencye04a89d39c733d937499Provider()
 }
 
 #else
@@ -59,6 +64,8 @@ extension AppComponent: Registration {
     public func registerItems() {
 
         localTable["rootComponent-RootComponent"] = { self.rootComponent as Any }
+        localTable["mainComponent-MainComponent"] = { self.mainComponent as Any }
+        localTable["introComponent-IntroComponent"] = { self.introComponent as Any }
     }
 }
 extension MainComponent: Registration {
@@ -68,10 +75,8 @@ extension MainComponent: Registration {
 }
 extension RootComponent: Registration {
     public func registerItems() {
-
-        localTable["rootViewModel-SceneStateModel"] = { self.rootViewModel as Any }
-        localTable["introBuilder-IntroComponent"] = { self.introBuilder as Any }
-        localTable["mainBuilder-MainComponent"] = { self.mainBuilder as Any }
+        keyPathToName[\RootDependency.introComponent] = "introComponent-IntroComponent"
+        keyPathToName[\RootDependency.mainComponent] = "mainComponent-MainComponent"
     }
 }
 extension IntroComponent: Registration {
@@ -96,9 +101,9 @@ private func registerProviderFactory(_ componentPath: String, _ factory: @escapi
 
 private func register1() {
     registerProviderFactory("^->AppComponent", factoryEmptyDependencyProvider)
-    registerProviderFactory("^->AppComponent->RootComponent->MainComponent", factory8c7fc8c34a96d31e2d1fe3b0c44298fc1c149afb)
-    registerProviderFactory("^->AppComponent->RootComponent", factory264bfc4d4cb6b0629b40e3b0c44298fc1c149afb)
-    registerProviderFactory("^->AppComponent->RootComponent->IntroComponent", factoryf95bd3e99343a145d817e3b0c44298fc1c149afb)
+    registerProviderFactory("^->AppComponent->MainComponent", factoryc9274e46e78e70f29c54e3b0c44298fc1c149afb)
+    registerProviderFactory("^->AppComponent->RootComponent", factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5)
+    registerProviderFactory("^->AppComponent->IntroComponent", factoryaf0e1f54bae4c77ad4ace3b0c44298fc1c149afb)
 }
 #endif
 

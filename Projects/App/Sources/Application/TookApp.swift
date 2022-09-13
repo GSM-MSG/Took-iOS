@@ -1,7 +1,6 @@
 import SwiftUI
 import NeedleFoundation
 import SignupFeature
-import DesignSystem
 
 @main
 struct TookApp: App {
