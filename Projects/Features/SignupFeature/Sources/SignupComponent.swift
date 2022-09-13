@@ -6,6 +6,6 @@ public protocol SignupDependency: Dependency {
 
 public final class SignupComponent: Component<SignupDependency> {
     public func makeView() -> some View {
-        SignupView()
+        SignupView(viewModel: .init())
     }
 }
