@@ -24,7 +24,9 @@ jobs:
       run: curl -Ls https://install.tuist.io | bash
       
     - name: project Generate
-      run: make generate
+      run: |
+        tuist fetch
+        tuist generate
       
     - name: build
       run: tuist build

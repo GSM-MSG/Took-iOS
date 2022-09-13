@@ -4,28 +4,17 @@ import IntroFeature
 import MainFeature
 
 public protocol RootDependency: Dependency {
+    var introComponent: IntroComponent { get }
+    var mainComponent: MainComponent { get }
+    var sceneStateModel: SceneStateModel { get }
 }
 
-public final class RootComponent: Component<RootDependency> {
-    public var rootViewModel: SceneStateModel {
-        shared {
-            SceneStateModel()
-        }
-    }
-
-    public var introBuilder: IntroComponent {
-        IntroComponent(parent: self)
-    }
-
-    public var mainBuilder: MainComponent {
-        MainComponent(parent: self)
-    }
-
+public final class RootComponent: Component<RootDependency>, ComponentBuilder {
     public func makeView() -> RootView {
         RootView(
-            sceneStateModel: rootViewModel,
-            introBuilder: introBuilder,
-            mainBuilder: mainBuilder
+            sceneStateModel: dependency.sceneStateModel,
+            introBuilder: dependency.introComponent,
+            mainBuilder: dependency.mainComponent
         )
     }
 }

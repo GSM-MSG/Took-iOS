@@ -1,16 +1,14 @@
 import NeedleFoundation
 import SwiftUI
+import CommonFeature
+import SignupFeature
 
 public protocol IntroDependency: Dependency {
+    var signupComponent: SignupComponent { get }
 }
 
-public protocol IntroBuilder {
-    associatedtype ViewType: View
-    func makeView() -> ViewType
-}
-
-public final class IntroComponent: Component<IntroDependency>, IntroBuilder {
+public final class IntroComponent: Component<IntroDependency>, ComponentBuilder {
     public func makeView() -> some View {
-        IntroView()
+        IntroView(signupComponent: dependency.signupComponent)
     }
 }

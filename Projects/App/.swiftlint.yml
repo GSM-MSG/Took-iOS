@@ -1,3 +1,2 @@
 excluded:
   - "**/*/NeedleGenerated.swift"
-  - "Tuist"
