@@ -1,7 +1,13 @@
 import APIKit
 import DataMappingModule
 
-public final class AuthRemoteDataSource: BaseRemoteDataSource<AuthAPI> {
+public protocol AuthRemoteDataSource {
+    func signin(req: SigninRequestDTO) async throws
+    func signup(req: SignupRequestDTO) async throws
+    func logout() async throws
+}
+
+public final class AuthRemoteDataSourceImpl: BaseRemoteDataSource<AuthAPI>, AuthRemoteDataSource {
     public func signin(req: SigninRequestDTO) async throws {
         try await request(.signin(req), dto: NoResponse.self)
     }
