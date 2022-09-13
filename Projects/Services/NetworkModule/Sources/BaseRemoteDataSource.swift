@@ -10,7 +10,7 @@ public class BaseRemoteDataSource<API: TookAPI> {
     private let keychain: Keychain
     private let provider: MoyaProvider<API>
     private let decoder = JSONDecoder()
-    private let maxRetryCount = 3
+    private let maxRetryCount = 2
 
     public init(
         keychain: any Keychain,
