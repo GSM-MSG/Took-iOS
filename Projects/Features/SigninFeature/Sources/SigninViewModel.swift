@@ -1,7 +1,7 @@
 import Combine
 
 public final class SigninViewModel: ObservableObject {
-    public init(){}
+    public init() {}
     @Published var emailText: String = ""
     @Published var passwordText: String = ""
     @Published var isError: Bool = false

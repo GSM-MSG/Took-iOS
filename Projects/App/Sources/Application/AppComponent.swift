@@ -6,6 +6,7 @@ import IntroFeature
 import SignupFeature
 import KeychainModule
 import CommonFeature
+import SigninFeature
 
 final class AppComponent: BootstrapComponent {}
 
@@ -42,6 +43,10 @@ extension AppComponent {
 
     public var signupComponent: SignupComponent {
         SignupComponent(parent: self)
+    }
+
+    public var signinComponent: SigninComponent {
+        SigninComponent(parent: self)
     }
 }
 

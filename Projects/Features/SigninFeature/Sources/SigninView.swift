@@ -9,7 +9,7 @@ public struct SigninView: View {
     }
 
     @StateObject var viewModel: SigninViewModel
-//    @FocusState private var focusField: FocusField?
+    @FocusState private var focusField: FocusField?
 
     public init(viewModel: SigninViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -20,14 +20,17 @@ public struct SigninView: View {
             TookImage(.background)
                 .ignoresSafeArea()
                 .zIndex(0)
+
             VStack {
                 TookTextField(
                     "이메일",
                     placeholderText: "이메일을 입력해 주세요.",
                     text: $viewModel.emailText,
                     isError: false
-                )
-//                .focused($focusField, equals: .email)
+                ) {
+                    focusField = .password
+                }
+                .focused($focusField, equals: .email)
                 .padding(.top, 32)
 
                 SecureTookTextField(
@@ -37,14 +40,16 @@ public struct SigninView: View {
                     isError: false,
                     errorText: "이메일 또는 비밀번호가 잘못되었습니다."
                 )
-//                .focused($focusField, equals: .password)
+                .focused($focusField, equals: .password)
                 .padding(.top, 24)
 
                 Spacer()
+
                 TookButton(text: "로그인")
                     .tookTypo(.medium(.medium))
                     .padding(.bottom, 16)
                     .disabled(viewModel.isFormEmpty)
+
                 HStack {
                     NavigationLink {
                         Text("login")
@@ -52,9 +57,11 @@ public struct SigninView: View {
                         Text("비밀번호 찾기")
                             .tookTypo(.regular(.small), color: .Took.gray)
                     }
+
                     Divider()
                         .frame(width: 1, height: 8)
                         .overlay(Color.Took.gray)
+
                     NavigationLink {
                         Text("login")
                     } label: {
@@ -62,7 +69,7 @@ public struct SigninView: View {
                             .tookTypo(.regular(.small), color: .Took.gray)
                     }
                 }
-
+                .padding(.bottom, 24)
             }
         }
         .navigationTitle("로그인")
