@@ -3,9 +3,9 @@ import NetworkModule
 import DataMappingModule
 
 public struct AuthRepositoryImpl: AuthRepository {
-    private let authRemoteDataSource: AuthRemoteDataSource
+    private let authRemoteDataSource: any AuthRemoteDataSource
 
-    public init(authRemoteDataSource: AuthRemoteDataSource) {
+    public init(authRemoteDataSource: any AuthRemoteDataSource) {
         self.authRemoteDataSource = authRemoteDataSource
     }
     public func signin(req: SigninRequestDTO) async throws {

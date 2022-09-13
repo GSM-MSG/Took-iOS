@@ -13,7 +13,7 @@ public class BaseRemoteDataSource<API: TookAPI> {
     private let maxRetryCount = 3
 
     public init(
-        keychain: Keychain,
+        keychain: any Keychain,
         provider: MoyaProvider<API>? = nil
     ) {
         self.keychain = keychain
