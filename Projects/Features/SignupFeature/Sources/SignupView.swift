@@ -30,7 +30,7 @@ public struct SignupView: View {
                 }
                 .focused($focusField, equals: .email)
 
-                TookTextField(
+                SecureTookTextField(
                     "비밀번호",
                     placeholderText: "비밀번호를 입력해주세요.",
                     text: $viewModel.passwordText,
