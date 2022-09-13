@@ -11,9 +11,7 @@ struct TookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NavigationView {
-                SignupView(viewModel: .init())
-            }
+            AppComponent().makeRootView()
         }
     }
 }

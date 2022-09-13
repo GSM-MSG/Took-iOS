@@ -9,6 +9,7 @@ public struct SignupView: View {
 
     @StateObject var viewModel: SignupViewModel
     @FocusState private var focusField: FocusField?
+    @Environment(\.dismiss) var dismiss
 
     public init(viewModel: SignupViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
@@ -43,6 +44,9 @@ public struct SignupView: View {
 
                 VStack(spacing: 16) {
                     TookButton(text: "회원가입", style: .default) {
+                        Task {
+                            await viewModel.signup()
+                        }
                     }
                     .disabled(viewModel.isFormEmpty)
 
@@ -58,11 +62,22 @@ public struct SignupView: View {
             .padding(.horizontal, 16)
             .padding(.top, 32)
         }
+        .configBackButton(dismiss: dismiss)
+        .adaptiveSheet(isPresented: $viewModel.isPresentedTerms, detents: [.medium()], content: {
+            termsSheetView()
+        })
         .onAppear {
             focusField = .email
         }
         .navigationTitle("회원가입")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    @ViewBuilder
+    func termsSheetView() -> some View {
+        VStack {
+            Text("Terms")
+        }
     }
 }
 

@@ -42,7 +42,7 @@ struct AdaptiveSheet<T: View>: ViewModifier {
     }
 }
 @available(iOS 15.0, *)
-extension View {
+public extension View {
     func adaptiveSheet<T: View>(
         isPresented: Binding<Bool>,
         detents: [UISheetPresentationController.Detent] = [.medium(), .large()],
