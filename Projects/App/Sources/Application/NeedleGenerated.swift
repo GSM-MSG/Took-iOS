@@ -54,6 +54,9 @@ private class RootDependency3944cc797a4a88956fb5Provider: RootDependency {
     var mainComponent: MainComponent {
         return appComponent.mainComponent
     }
+    var sceneStateModel: SceneStateModel {
+        return appComponent.sceneStateModel
+    }
     private let appComponent: AppComponent
     init(appComponent: AppComponent) {
         self.appComponent = appComponent
@@ -84,6 +87,7 @@ extension AppComponent: Registration {
         localTable["authRepository-AuthRepository"] = { self.authRepository as Any }
         localTable["rootComponent-RootComponent"] = { self.rootComponent as Any }
         localTable["keychain-Keychain"] = { self.keychain as Any }
+        localTable["sceneStateModel-SceneStateModel"] = { self.sceneStateModel as Any }
         localTable["introComponent-IntroComponent"] = { self.introComponent as Any }
         localTable["signupComponent-SignupComponent"] = { self.signupComponent as Any }
         localTable["mainComponent-MainComponent"] = { self.mainComponent as Any }
@@ -107,6 +111,7 @@ extension RootComponent: Registration {
     public func registerItems() {
         keyPathToName[\RootDependency.introComponent] = "introComponent-IntroComponent"
         keyPathToName[\RootDependency.mainComponent] = "mainComponent-MainComponent"
+        keyPathToName[\RootDependency.sceneStateModel] = "sceneStateModel-SceneStateModel"
     }
 }
 extension IntroComponent: Registration {

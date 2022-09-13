@@ -5,6 +5,7 @@ import MainFeature
 import IntroFeature
 import SignupFeature
 import KeychainModule
+import CommonFeature
 
 final class AppComponent: BootstrapComponent {}
 
@@ -15,12 +16,20 @@ extension AppComponent {
     }
 
     public var rootComponent: RootComponent {
-        RootComponent(parent: self)
+        shared {
+            RootComponent(parent: self)
+        }
     }
 
     public var keychain: Keychain {
         shared {
             DefaultKeychain()
+        }
+    }
+
+    public var sceneStateModel: SceneStateModel {
+        shared {
+            SceneStateModel()
         }
     }
 }
