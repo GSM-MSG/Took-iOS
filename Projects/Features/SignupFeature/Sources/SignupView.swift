@@ -65,11 +65,9 @@ public struct SignupView: View {
         .configBackButton(willDismiss: {
             viewModel.isPresentedTerms = false
         }, dismiss: dismiss)
-        .sheetWithDetents(
-            isPresented: $viewModel.isPresentedTerms,
-            detents: [.medium()], content: {
-                termsSheetView()
-            })
+        .adaptiveSheet(isPresented: $viewModel.isPresentedTerms, detents: [.medium()]) {
+            TestView()
+        }
         .onAppear {
             focusField = .email
         }
@@ -79,8 +77,31 @@ public struct SignupView: View {
 
     @ViewBuilder
     func termsSheetView() -> some View {
+        VStack(alignment: .leading) {
+            Text("약관동의")
+                .tookTypo(.bold(.extraLarge), color: .Took.black)
+                .padding(.top, 28)
+
+            HStack(spacing: 8) {
+                TookCheckbox(isOn: $viewModel.isAgreedAllTerms)
+                Text("약관 전체동의")
+                    .tookTypo(.medium(.large), color: .Took.black)
+                Spacer()
+            }
+
+            Spacer()
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(.horizontal, 32)
+        .background(Color.Took.white)
+    }
+}
+
+struct TestView: View {
+    @State var isOn = false
+    var body: some View {
         VStack {
-            Text("Terms")
+            TookCheckbox(isOn: $isOn)
         }
     }
 }
