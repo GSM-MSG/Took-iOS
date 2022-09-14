@@ -3,12 +3,6 @@ import DesignSystem
 
 public struct MainView: View {
     @State var selection: Int = 0
-    @Namespace var cardAnimation
-    let tabList: [(TookIcon.Icon, String)] = [
-        (.tabHome, "내 명함"),
-        (.card, "명함 교환"),
-        (.tabCardList, "명함 목록")
-    ]
 
     public init() {
         UITabBar.appearance().isHidden = true
