@@ -42,31 +42,20 @@ public struct MainView: View {
 
                         Spacer()
 
-                        if selection == 1 {
-                            TookIcon(
-                                .selectedCard,
-                                width: 76,
-                                height: 76,
-                                renderingMode: .original
-                            )
-                            .offset(y: -30)
-                            .transition(.offset(y: 30).combined(with: .opacity))
-                        } else {
-                            MainTabItemView(.card, text: "명함 교환", isSelected: selection == 1)
-                                .transition(.opacity)
-                                .onTapGesture {
-                                    withAnimation {
-                                        selection = 1
-                                    }
-                                }
-                        }
+                        TookIcon(
+                            .selectedCard,
+                            width: 76,
+                            height: 76,
+                            renderingMode: .original
+                        )
+                        .offset(y: -30)
 
                         Spacer()
 
-                        MainTabItemView(.tabCardList, text: "명함목록", isSelected: selection == 2)
+                        MainTabItemView(.tabCardList, text: "명함목록", isSelected: selection == 1)
                             .onTapGesture {
                                 withAnimation {
-                                    selection = 2
+                                    selection = 1
                                 }
                             }
 
