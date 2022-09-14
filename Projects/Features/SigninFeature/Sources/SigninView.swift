@@ -30,6 +30,7 @@ public struct SigninView: View {
                 ) {
                     focusField = .password
                 }
+                .textContentType(.username)
                 .focused($focusField, equals: .email)
                 .padding(.top, 32)
 
@@ -40,6 +41,7 @@ public struct SigninView: View {
                     isError: false,
                     errorText: "이메일 또는 비밀번호가 잘못되었습니다."
                 )
+                .textContentType(.password)
                 .focused($focusField, equals: .password)
                 .padding(.top, 24)
 
