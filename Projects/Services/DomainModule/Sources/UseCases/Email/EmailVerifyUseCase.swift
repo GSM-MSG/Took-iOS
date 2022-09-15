@@ -1,3 +1,3 @@
 public protocol EmailVerifyUseCase {
-    func execute() async throws
+    func execute(email: String, code: String) async throws
 }

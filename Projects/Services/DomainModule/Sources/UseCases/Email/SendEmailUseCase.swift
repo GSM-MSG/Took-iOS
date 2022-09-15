@@ -1,3 +1,3 @@
 public protocol SendEmailUseCase {
-    func execute() async throws
+    func execute(email: String) async throws
 }
