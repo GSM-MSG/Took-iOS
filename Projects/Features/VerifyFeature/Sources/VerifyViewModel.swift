@@ -32,6 +32,7 @@ public final class VerifyViewModel: BaseViewModel {
     func verify() async {
         await withAsyncTry(with: self) { owner in
             try await owner.emailVerifyUseCase.execute(email: owner.email, code: owner.otpText)
+            owner.isVerifySuccess = true
         }
     }
 }
