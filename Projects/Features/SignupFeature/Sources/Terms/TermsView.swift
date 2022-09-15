@@ -10,7 +10,7 @@ struct TermsView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Text("약관동의")
-                .tookTypo(.bold(.extraLarge), color: .Took.black)
+                .tookTypo(.semibold(.extraLarge), color: .Took.black)
                 .padding(.top, 28)
                 .padding(.horizontal, 16)
 
