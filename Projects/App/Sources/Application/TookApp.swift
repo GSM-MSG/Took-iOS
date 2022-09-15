@@ -11,7 +11,7 @@ struct TookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AppComponent().verifyComponent.makeView(email: "", action: {})
+            AppComponent().makeRootView()
         }
     }
 }

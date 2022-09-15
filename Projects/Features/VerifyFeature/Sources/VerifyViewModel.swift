@@ -1,8 +1,9 @@
 import Combine
 import DomainModule
 import ErrorModule
+import CommonFeature
 
-public final class VerifyViewModel: ObservableObject {
+public final class VerifyViewModel: BaseViewModel {
     private let email: String
     private let sendEmailUseCase: any SendEmailUseCase
     private let emailVerifyUseCase: any EmailVerifyUseCase
@@ -15,22 +16,22 @@ public final class VerifyViewModel: ObservableObject {
         self.email = email
         self.sendEmailUseCase = sendEmailUseCase
         self.emailVerifyUseCase = emailVerifyUseCase
+        super.init()
     }
 
-    @Published var isLoading = false
     @Published var otpText = ""
     @Published var otpFields: [String] = Array(repeating: "", count: 4)
-    @Published var isError = false
-    @Published var errorMessage = ""
     @Published var isVerifySuccess = false
 
-    @MainActor
     func onAppear() async {
-        do {
-            try await sendEmailUseCase.execute(email: email)
-        } catch {
-            isError = true
-            errorMessage = error.asTookError.localizedDescription
+        await withAsyncTry(with: self) { owner in
+            try await owner.sendEmailUseCase.execute(email: owner.email)
+        }
+    }
+
+    func verify() async {
+        await withAsyncTry(with: self) { owner in
+            try await owner.emailVerifyUseCase.execute(email: owner.email, code: owner.otpText)
         }
     }
 }

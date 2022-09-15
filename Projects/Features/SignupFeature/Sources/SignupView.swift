@@ -1,5 +1,6 @@
 import SwiftUI
 import DesignSystem
+import VerifyFeature
 
 public struct SignupView: View {
     private enum FocusField: Hashable {
@@ -10,9 +11,14 @@ public struct SignupView: View {
     @StateObject var viewModel: SignupViewModel
     @FocusState private var focusField: FocusField?
     @Environment(\.dismiss) var dismiss
+    private let verifyComponent: VerifyComponent
 
-    public init(viewModel: SignupViewModel) {
+    public init(
+        viewModel: SignupViewModel,
+        verifyComponent: VerifyComponent
+    ) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.verifyComponent = verifyComponent
     }
 
     public var body: some View {
@@ -76,12 +82,10 @@ public struct SignupView: View {
         }
         .navigationTitle("회원가입")
         .navigationBarTitleDisplayMode(.inline)
-        .navigate(to: Text("Verify"), when: $viewModel.isNavigateToVerify)
-    }
-}
-
-struct SignupView_Previews: PreviewProvider {
-    static var previews: some View {
-        SignupView(viewModel: SignupViewModel())
+        .navigate(to: DeferView({
+            verifyComponent.makeView(email: viewModel.emailText) {
+                print("A")
+            }
+        }), when: $viewModel.isNavigateToVerify)
     }
 }

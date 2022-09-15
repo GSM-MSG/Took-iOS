@@ -13,6 +13,7 @@ public final class SignupViewModel: ObservableObject {
 
     public init() {}
 
+    @MainActor
     func signup() async {
         isPresentedTerms = true
     }
