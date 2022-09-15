@@ -37,6 +37,9 @@ public struct VerifyView: View {
                 otpTextField()
 
                 Spacer()
+
+                TookButton(text: "인증하기")
+                    .padding(.bottom, 44)
             }
 
             if viewModel.isLoading {
@@ -47,6 +50,9 @@ public struct VerifyView: View {
                         .progressViewStyle(.circular)
                 }
             }
+        }
+        .task {
+            await viewModel.onAppear()
         }
         .navigationTitle("인증번호")
         .navigationBarTitleDisplayMode(.inline)
@@ -117,11 +123,5 @@ public struct VerifyView: View {
                     .cornerRadius(16)
             }
         }
-    }
-}
-
-struct VerifyView_Previews: PreviewProvider {
-    static var previews: some View {
-        VerifyView(viewModel: VerifyViewModel())
     }
 }

@@ -11,7 +11,7 @@ struct TookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            VerifyView(viewModel: VerifyViewModel())
+            AppComponent().verifyComponent.makeView(email: "", action: {})
         }
     }
 }

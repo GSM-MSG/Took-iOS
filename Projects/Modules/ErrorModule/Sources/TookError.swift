@@ -7,7 +7,7 @@ public enum TookError: Error {
     // MARK: - Auth
     case notVerifiedEmail
     case alreadyExistEmail
-    
+
     // MARK: - Email
     case manyToRequestEmail
     case authKeyNotMatched
@@ -29,5 +29,11 @@ extension TookError: LocalizedError {
         case .authKeyNotMatched:
             return "인증코드가 일치하지 않습니다"
         }
+    }
+}
+
+public extension Error {
+    var asTookError: TookError {
+        self as? TookError ?? .unknown
     }
 }

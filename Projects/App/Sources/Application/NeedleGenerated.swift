@@ -80,15 +80,20 @@ private func factory2882a056d84a613debcce3b0c44298fc1c149afb(_ component: Needle
     return SigninDependencyde06a9d0b22764487733Provider()
 }
 private class VerifyDependency0d6de67080ea263fd25dProvider: VerifyDependency {
-
-
-    init() {
-
+    var sendEmailUseCase: any SendEmailUseCase {
+        return appComponent.sendEmailUseCase
+    }
+    var emailVerifyUseCase: any EmailVerifyUseCase {
+        return appComponent.emailVerifyUseCase
+    }
+    private let appComponent: AppComponent
+    init(appComponent: AppComponent) {
+        self.appComponent = appComponent
     }
 }
 /// ^->AppComponent->VerifyComponent
-private func factoryc9c1a13446a3ac12f8f9e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
-    return VerifyDependency0d6de67080ea263fd25dProvider()
+private func factoryc9c1a13446a3ac12f8f9f47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return VerifyDependency0d6de67080ea263fd25dProvider(appComponent: parent1(component) as! AppComponent)
 }
 private class IntroDependencye04a89d39c733d937499Provider: IntroDependency {
     var signupComponent: SignupComponent {
@@ -151,7 +156,8 @@ extension SigninComponent: Registration {
 }
 extension VerifyComponent: Registration {
     public func registerItems() {
-
+        keyPathToName[\VerifyDependency.sendEmailUseCase] = "sendEmailUseCase-any SendEmailUseCase"
+        keyPathToName[\VerifyDependency.emailVerifyUseCase] = "emailVerifyUseCase-any EmailVerifyUseCase"
     }
 }
 extension IntroComponent: Registration {
@@ -180,7 +186,7 @@ private func register1() {
     registerProviderFactory("^->AppComponent->MainComponent", factoryc9274e46e78e70f29c54e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->RootComponent", factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->SigninComponent", factory2882a056d84a613debcce3b0c44298fc1c149afb)
-    registerProviderFactory("^->AppComponent->VerifyComponent", factoryc9c1a13446a3ac12f8f9e3b0c44298fc1c149afb)
+    registerProviderFactory("^->AppComponent->VerifyComponent", factoryc9c1a13446a3ac12f8f9f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->IntroComponent", factoryaf0e1f54bae4c77ad4acf47b58f8f304c97af4d5)
 }
 #endif
