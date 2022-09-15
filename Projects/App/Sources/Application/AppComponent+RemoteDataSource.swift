@@ -5,9 +5,16 @@ import NeedleFoundation
 // MARK: - DataSource
 extension AppComponent {
     // MARK: - Auth
-    public var authRemoteDataSource: AuthRemoteDataSource {
+    public var authRemoteDataSource: any AuthRemoteDataSource {
         shared {
             AuthRemoteDataSourceImpl(keychain: keychain)
+        }
+    }
+
+    // MARK: - Email
+    public var emailRemoteDataSource: any EmailRemoteDataSource {
+        shared {
+            EmailRemoteDataSourceImpl(keychain: keychain)
         }
     }
 }

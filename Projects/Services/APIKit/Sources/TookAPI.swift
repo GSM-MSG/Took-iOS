@@ -10,7 +10,7 @@ public protocol TookAPI: TargetType, JwtAuthorizable {
 
 public extension TookAPI {
     var baseURL: URL {
-        return URL(string: "")!
+        return URL(string: "https://www.google.com")!
     }
     var path: String {
         domain.asURL + urlPath
