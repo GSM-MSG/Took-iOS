@@ -19,7 +19,7 @@ open class BaseViewModel: ObservableObject {
             try await action(object)
             isLoading = false
         } catch {
-            if let errorAction {
+            if let errorAction = errorAction {
                 errorAction(error.asTookError)
             } else {
                 isError = true
