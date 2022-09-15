@@ -31,7 +31,7 @@ public struct SecureTookTextField: View {
             if !labelText.isEmpty {
                 Text(labelText)
                     .foregroundColor(Color.Took.lightGray)
-                    .tookTypo(.bold(.medium))
+                    .tookTypo(.semibold(.medium))
             }
             if isSecure {
                 SecureField("", text: $text)

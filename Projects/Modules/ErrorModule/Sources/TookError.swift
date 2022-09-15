@@ -7,6 +7,10 @@ public enum TookError: Error {
     // MARK: - Auth
     case notVerifiedEmail
     case alreadyExistEmail
+
+    // MARK: - Email
+    case manyToRequestEmail
+    case authKeyNotMatched
 }
 
 extension TookError: LocalizedError {
@@ -20,6 +24,16 @@ extension TookError: LocalizedError {
             return "인증되지 않은 이메일입니다"
         case .alreadyExistEmail:
             return "이미 존재하는 이메일입니다"
+        case .manyToRequestEmail:
+            return "인증코드는 15분에 최대 3번만 보낼 수 있습니다"
+        case .authKeyNotMatched:
+            return "인증코드가 일치하지 않습니다"
         }
+    }
+}
+
+public extension Error {
+    var asTookError: TookError {
+        self as? TookError ?? .unknown
     }
 }

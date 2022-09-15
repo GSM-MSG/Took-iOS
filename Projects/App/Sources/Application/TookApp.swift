@@ -1,6 +1,6 @@
 import SwiftUI
 import NeedleFoundation
-import SignupFeature
+import VerifyFeature
 
 @main
 struct TookApp: App {

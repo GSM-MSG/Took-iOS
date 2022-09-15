@@ -30,7 +30,7 @@ public struct TookTextField: View {
             if !labelText.isEmpty {
                 Text(labelText)
                     .foregroundColor(Color.Took.lightGray)
-                    .tookTypo(.bold(.medium))
+                    .tookTypo(.semibold(.medium))
             }
             TextField("", text: $text)
                 .padding()
