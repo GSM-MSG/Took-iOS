@@ -7,4 +7,5 @@ public final class VerifyViewModel: ObservableObject {
     @Published var otpFields: [String] = Array(repeating: "", count: 4)
     @Published var isError = false
     @Published var errorMessage = ""
+    @Published var isVerifySuccess = false
 }

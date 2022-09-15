@@ -12,9 +12,14 @@ public struct VerifyView: View {
     @StateObject var viewModel: VerifyViewModel
     @Environment(\.dismiss) var dismiss
     @FocusState private var activeFocus: OTPFocusField?
+    private let action: () -> Void
 
-    public init(viewModel: VerifyViewModel) {
+    public init(
+        viewModel: VerifyViewModel,
+        action: @escaping () -> Void = {}
+    ) {
         _viewModel = StateObject(wrappedValue: viewModel)
+        self.action = action
     }
 
     public var body: some View {
@@ -48,6 +53,9 @@ public struct VerifyView: View {
         .configBackButton(dismiss: dismiss)
         .onChange(of: viewModel.otpFields) { newValue in
             otpCondition(value: newValue)
+        }
+        .onChange(of: viewModel.isVerifySuccess) { newValue in
+            if newValue { action() }
         }
     }
 

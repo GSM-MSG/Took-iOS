@@ -12,6 +12,7 @@ import RootFeature
 import SigninFeature
 import SignupFeature
 import SwiftUI
+import VerifyFeature
 
 // swiftlint:disable unused_declaration
 private let needleDependenciesHash : String? = nil
@@ -78,6 +79,17 @@ private class SigninDependencyde06a9d0b22764487733Provider: SigninDependency {
 private func factory2882a056d84a613debcce3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
     return SigninDependencyde06a9d0b22764487733Provider()
 }
+private class VerifyDependency0d6de67080ea263fd25dProvider: VerifyDependency {
+
+
+    init() {
+
+    }
+}
+/// ^->AppComponent->VerifyComponent
+private func factoryc9c1a13446a3ac12f8f9e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return VerifyDependency0d6de67080ea263fd25dProvider()
+}
 private class IntroDependencye04a89d39c733d937499Provider: IntroDependency {
     var signupComponent: SignupComponent {
         return appComponent.signupComponent
@@ -103,6 +115,7 @@ extension AppComponent: Registration {
         localTable["introComponent-IntroComponent"] = { self.introComponent as Any }
         localTable["signupComponent-SignupComponent"] = { self.signupComponent as Any }
         localTable["signinComponent-SigninComponent"] = { self.signinComponent as Any }
+        localTable["verifyComponent-VerifyComponent"] = { self.verifyComponent as Any }
         localTable["mainComponent-MainComponent"] = { self.mainComponent as Any }
         localTable["signinUseCase-SigninUseCase"] = { self.signinUseCase as Any }
         localTable["signupUseCase-SignupUseCase"] = { self.signupUseCase as Any }
@@ -128,6 +141,11 @@ extension RootComponent: Registration {
     }
 }
 extension SigninComponent: Registration {
+    public func registerItems() {
+
+    }
+}
+extension VerifyComponent: Registration {
     public func registerItems() {
 
     }
@@ -158,6 +176,7 @@ private func register1() {
     registerProviderFactory("^->AppComponent->MainComponent", factoryc9274e46e78e70f29c54e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->RootComponent", factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->SigninComponent", factory2882a056d84a613debcce3b0c44298fc1c149afb)
+    registerProviderFactory("^->AppComponent->VerifyComponent", factoryc9c1a13446a3ac12f8f9e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->IntroComponent", factoryaf0e1f54bae4c77ad4acf47b58f8f304c97af4d5)
 }
 #endif
