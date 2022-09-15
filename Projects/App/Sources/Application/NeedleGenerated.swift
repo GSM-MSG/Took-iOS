@@ -108,7 +108,8 @@ private func factoryaf0e1f54bae4c77ad4acf47b58f8f304c97af4d5(_ component: Needle
 extension AppComponent: Registration {
     public func registerItems() {
 
-        localTable["authRepository-AuthRepository"] = { self.authRepository as Any }
+        localTable["authRepository-any AuthRepository"] = { self.authRepository as Any }
+        localTable["emailRepository-any EmailRepository"] = { self.emailRepository as Any }
         localTable["rootComponent-RootComponent"] = { self.rootComponent as Any }
         localTable["keychain-Keychain"] = { self.keychain as Any }
         localTable["sceneStateModel-SceneStateModel"] = { self.sceneStateModel as Any }
@@ -117,10 +118,13 @@ extension AppComponent: Registration {
         localTable["signinComponent-SigninComponent"] = { self.signinComponent as Any }
         localTable["verifyComponent-VerifyComponent"] = { self.verifyComponent as Any }
         localTable["mainComponent-MainComponent"] = { self.mainComponent as Any }
-        localTable["signinUseCase-SigninUseCase"] = { self.signinUseCase as Any }
-        localTable["signupUseCase-SignupUseCase"] = { self.signupUseCase as Any }
-        localTable["logoutUseCase-LogoutUseCase"] = { self.logoutUseCase as Any }
-        localTable["authRemoteDataSource-AuthRemoteDataSource"] = { self.authRemoteDataSource as Any }
+        localTable["signinUseCase-any SigninUseCase"] = { self.signinUseCase as Any }
+        localTable["signupUseCase-any SignupUseCase"] = { self.signupUseCase as Any }
+        localTable["logoutUseCase-any LogoutUseCase"] = { self.logoutUseCase as Any }
+        localTable["sendEmailUseCase-any SendEmailUseCase"] = { self.sendEmailUseCase as Any }
+        localTable["emailVerifyUseCase-any EmailVerifyUseCase"] = { self.emailVerifyUseCase as Any }
+        localTable["authRemoteDataSource-any AuthRemoteDataSource"] = { self.authRemoteDataSource as Any }
+        localTable["emailRemoteDataSource-any EmailRemoteDataSource"] = { self.emailRemoteDataSource as Any }
     }
 }
 extension SignupComponent: Registration {

@@ -1,6 +1,6 @@
 import DomainModule
 
-public struct EmaiVerifylUseCaseImpl: EmailVerifyUseCase {
+public struct EmailVerifylUseCaseImpl: EmailVerifyUseCase {
     private let emailRepository: any EmailRepository
 
     public init(emailRepository: any EmailRepository) {

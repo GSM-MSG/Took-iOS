@@ -5,9 +5,16 @@ import NeedleFoundation
 // MARK: - Repository
 extension AppComponent {
     // MARK: - Auth
-    public var authRepository: AuthRepository {
+    public var authRepository: any AuthRepository {
         shared {
             AuthRepositoryImpl(authRemoteDataSource: authRemoteDataSource)
+        }
+    }
+
+    // MARK: - Email
+    public var emailRepository: any EmailRepository {
+        shared {
+            EmailRepositoryImpl(emailRemoteDataSource: emailRemoteDataSource)
         }
     }
 }
