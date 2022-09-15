@@ -64,7 +64,10 @@ public struct VerifyView: View {
             if newValue { action() }
         }
     }
+}
 
+// MARK: - Methoc
+private extension VerifyView {
     func otpCondition(value: [String]) {
         for index in OTPFocusField.allCases.indices where value[index].count == OTPFocusField.allCases.count {
             DispatchQueue.main.async {
