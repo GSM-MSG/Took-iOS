@@ -28,12 +28,6 @@ extension AppComponent {
             DefaultKeychain()
         }
     }
-
-    public var sceneStateModel: SceneStateModel {
-        shared {
-            SceneStateModel()
-        }
-    }
 }
 
 // MARK: - Intro
