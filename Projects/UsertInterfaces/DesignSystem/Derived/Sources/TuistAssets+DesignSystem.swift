@@ -24,6 +24,7 @@ public enum DesignSystemAsset {
     public static let gray = DesignSystemColors(name: "Gray")
     public static let lightGray = DesignSystemColors(name: "LightGray")
     public static let strok = DesignSystemColors(name: "Strok")
+    public static let systemGreen = DesignSystemColors(name: "SystemGreen")
     public static let transparencyBoxBg = DesignSystemColors(name: "TransparencyBoxBg")
     public static let veryDarkGray = DesignSystemColors(name: "VeryDarkGray")
     public static let veryVeryDarkGray = DesignSystemColors(name: "VeryVeryDarkGray")
