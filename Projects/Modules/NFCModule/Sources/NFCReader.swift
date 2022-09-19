@@ -3,9 +3,11 @@ import CoreNFC
 public final class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
     public var actualData: String?
     public var nfcSession: NFCNDEFReaderSession?
+    public var action: ((String) -> Void)?
 
-    public func scan(data actualData: String) {
+    public func scan(data actualData: String, action: @escaping (String) -> Void = { _ in }) {
         self.actualData = actualData
+        self.action = action
         nfcSession = NFCNDEFReaderSession(delegate: self, queue: nil, invalidateAfterFirstRead: true)
         nfcSession?.alertMessage = "주변 Took을 실행한 기기와 가까이해주세요!"
         nfcSession?.begin()
@@ -36,6 +38,10 @@ public final class NFCReader: NSObject, NFCNDEFReaderSessionDelegate {
                             .wellKnownTypeTextPayload(string: actualData ?? "", locale: .current)!
                         ])
                     )
+                    let message = try await tag.readNDEF()
+                    if let uuid = message.records.first?.wellKnownTypeTextPayload().0, let action = action {
+                        action(uuid)
+                    }
                     nfcInvalidateAlert(session: session, message: "전송에 성공했습니다!")
                 default:
                     nfcInvalidateAlert(session: session, message: "NFC 태그에 연결할 수 없어요!")
