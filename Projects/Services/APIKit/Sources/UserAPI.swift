@@ -39,7 +39,7 @@ extension UserAPI: TookAPI {
         case let .withdraw(password):
             return .requestParameters(parameters: [
                 "password": password
-            ], encoding: JSONEncoding.default)
+            ], encoding: URLEncoding.queryString)
         default:
             return .requestPlain
         }
