@@ -49,12 +49,21 @@ extension UserAPI: TookAPI {
         .accessToken
     }
 
-    public var errorMapper: [Int : TookError] {
+    public var errorMapper: [Int: TookError] {
         switch self {
+        case .myBusinessCard:
+            return [
+                500: .unknown
+            ]
+        case .reset:
+            return [
+                500: .unknown
+            ]
         case .secession:
             return [
+                404: .unknown,
+                500: .unknown
             ]
         }
     }
-    
 }
