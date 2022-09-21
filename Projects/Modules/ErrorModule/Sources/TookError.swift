@@ -11,6 +11,9 @@ public enum TookError: Error {
     // MARK: - Email
     case manyToRequestEmail
     case authKeyNotMatched
+    
+    // MARK: - User
+    case notFoundUser
 }
 
 extension TookError: LocalizedError {
@@ -28,6 +31,8 @@ extension TookError: LocalizedError {
             return "인증코드는 15분에 최대 3번만 보낼 수 있습니다"
         case .authKeyNotMatched:
             return "인증코드가 일치하지 않습니다"
+        case .notFoundUser:
+            return "존재하지 않는 유저입니다"
         }
     }
 }
