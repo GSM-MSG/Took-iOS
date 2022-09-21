@@ -13,12 +13,12 @@ public struct UserRepositoryImpl: UserRepository {
         try await userRemoteDataSource.myBesinessCard()
     }
 
-    public func renewalPassword(req: RenewalPasswordRequestDTO) async throws {
-        try await userRemoteDataSource.renewalPassword(req: req)
+    public func renewalPassword(password: String) async throws {
+        try await userRemoteDataSource.renewalPassword(password: password)
     }
 
-    public func withdarw(req: RenewalPasswordRequestDTO) async throws {
-        try await userRemoteDataSource.withdarw(req: req)
+    public func withdarw(password: String) async throws {
+        try await userRemoteDataSource.withdarw(password: password)
     }
 
 }

@@ -7,8 +7,8 @@ public struct WithdrawUseCaseImpl: WithdrawUseCase {
     public init(userRepository: any UserRepository) {
         self.userRepository = userRepository
     }
-    
+
     public func execute(password: String) async throws {
-        try await userRepository.withdarw(req: password)
+        try await userRepository.withdarw(password: password)
     }
 }

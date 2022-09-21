@@ -3,17 +3,17 @@ import DataMappingModule
 
 public protocol UserRemoteDataSource {
     func myBesinessCard() async throws
-    func renewalPassword(req: RenewalPasswordRequestDTO) async throws
-    func withdarw(req: RenewalPasswordRequestDTO) async throws
+    func renewalPassword(password: String) async throws
+    func withdarw(password: String) async throws
 }
 
 public final class UserRemoteDataSourceImpl: BaseRemoteDataSource<UserAPI>, UserRemoteDataSource {
-    public func renewalPassword(req: RenewalPasswordRequestDTO) async throws {
-        try await request(.renewalPassword(req.password), dto: NoResponse.self)
+    public func renewalPassword(password: String) async throws {
+        try await request(.renewalPassword(password), dto: NoResponse.self)
     }
 
-    public func withdarw(req: RenewalPasswordRequestDTO) async throws {
-        try await request(.withdraw(req.password), dto: NoResponse.self)
+    public func withdarw(password: String) async throws {
+        try await request(.withdraw(password), dto: NoResponse.self)
     }
 
     public func myBesinessCard() async throws {

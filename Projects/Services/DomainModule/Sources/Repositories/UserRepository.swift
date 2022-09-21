@@ -2,6 +2,6 @@ import DataMappingModule
 
 public protocol UserRepository {
     func myBesinessCard() async throws
-    func renewalPassword(req: RenewalPasswordRequestDTO) async throws
-    func withdarw(req: RenewalPasswordRequestDTO) async throws
+    func renewalPassword(password: String) async throws
+    func withdarw(password: String) async throws
 }

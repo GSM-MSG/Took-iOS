@@ -7,8 +7,8 @@ public struct RenewalPasswordUseCasImpl: RenewalPasswordUseCase {
     public init(userRepository: any UserRepository) {
         self.userRepository = userRepository
     }
-    
+
     public func execute(password: String) async throws {
-        try await userRepository.renewalPassword(req: password)
+        try await userRepository.renewalPassword(password: password)
     }
 }
