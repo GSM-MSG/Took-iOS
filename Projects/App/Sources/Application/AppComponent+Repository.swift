@@ -17,4 +17,11 @@ extension AppComponent {
             EmailRepositoryImpl(emailRemoteDataSource: emailRemoteDataSource)
         }
     }
+
+    // MARK: - User
+    public var userRepository: any UserRepository {
+        shared {
+            UserRepositoryImpl(userRemoteDataSource: userRemoteDataSource)
+        }
+    }
 }

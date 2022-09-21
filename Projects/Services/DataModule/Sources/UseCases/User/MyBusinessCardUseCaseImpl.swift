@@ -9,6 +9,6 @@ public struct MyBusinessCardUseCaseImpl: MyBuinessUseCase {
     }
 
     public func execute() async throws {
-        try await userRepository.myBesinessCard()
+        try await userRepository.myBusinessCard()
     }
 }

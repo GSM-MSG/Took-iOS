@@ -117,6 +117,7 @@ extension AppComponent: Registration {
 
         localTable["authRepository-any AuthRepository"] = { self.authRepository as Any }
         localTable["emailRepository-any EmailRepository"] = { self.emailRepository as Any }
+        localTable["userRepository-any UserRepository"] = { self.userRepository as Any }
         localTable["rootComponent-RootComponent"] = { self.rootComponent as Any }
         localTable["keychain-Keychain"] = { self.keychain as Any }
         localTable["sceneStateModel-SceneStateModel"] = { self.sceneStateModel as Any }
@@ -130,8 +131,12 @@ extension AppComponent: Registration {
         localTable["logoutUseCase-any LogoutUseCase"] = { self.logoutUseCase as Any }
         localTable["sendEmailUseCase-any SendEmailUseCase"] = { self.sendEmailUseCase as Any }
         localTable["emailVerifyUseCase-any EmailVerifyUseCase"] = { self.emailVerifyUseCase as Any }
+        localTable["myBusinessCardUseCase-any MyBuinessUseCase"] = { self.myBusinessCardUseCase as Any }
+        localTable["renewalPasswordUseCase-any RenewalPasswordUseCase"] = { self.renewalPasswordUseCase as Any }
+        localTable["withdarwUseCase-any WithdrawUseCase"] = { self.withdarwUseCase as Any }
         localTable["authRemoteDataSource-any AuthRemoteDataSource"] = { self.authRemoteDataSource as Any }
         localTable["emailRemoteDataSource-any EmailRemoteDataSource"] = { self.emailRemoteDataSource as Any }
+        localTable["userRemoteDataSource-any UserRemoteDataSource"] = { self.userRemoteDataSource as Any }
     }
 }
 extension SignupComponent: Registration {

@@ -35,4 +35,23 @@ extension AppComponent {
             EmailVerifylUseCaseImpl(emailRepository: emailRepository)
         }
     }
+
+    // MARK: - User
+    public var myBusinessCardUseCase: any MyBuinessUseCase {
+        shared {
+            MyBusinessCardUseCaseImpl(userRepository: userRepository)
+        }
+    }
+
+    public var renewalPasswordUseCase: any RenewalPasswordUseCase {
+        shared {
+            RenewalPasswordUseCasImpl(userRepository: userRepository)
+        }
+    }
+
+    public var withdarwUseCase: any WithdrawUseCase {
+        shared {
+            WithdrawUseCaseImpl(userRepository: userRepository)
+        }
+    }
 }

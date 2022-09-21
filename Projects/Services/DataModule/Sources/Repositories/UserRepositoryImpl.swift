@@ -9,7 +9,7 @@ public struct UserRepositoryImpl: UserRepository {
         self.userRemoteDataSource = userRemoteDataSource
     }
 
-    public func myBesinessCard() async throws {
+    public func myBusinessCard() async throws {
         try await userRemoteDataSource.myBesinessCard()
     }
 
