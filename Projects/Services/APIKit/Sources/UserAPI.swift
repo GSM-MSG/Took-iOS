@@ -3,8 +3,8 @@ import ErrorModule
 
 public enum UserAPI {
     case myBusinessCard
-    case reset(String)
-    case secession(String)
+    case renewalPassword(String)
+    case withdraw(String)
 }
 
 extension UserAPI: TookAPI {
@@ -14,7 +14,7 @@ extension UserAPI: TookAPI {
 
     public var urlPath: String {
         switch self {
-        case .myBusinessCard, .reset, .secession:
+        case .myBusinessCard, .renewalPassword, .withdraw:
             return ""
         }
     }
@@ -23,20 +23,20 @@ extension UserAPI: TookAPI {
         switch self {
         case .myBusinessCard:
             return .get
-        case .reset:
+        case .renewalPassword:
             return .patch
-        case .secession:
+        case .withdraw:
             return .delete
         }
     }
 
     public var task: Task {
         switch self {
-        case let .reset(password):
+        case let .renewalPassword(password):
             return .requestParameters(parameters: [
                 "password": password
             ], encoding: JSONEncoding.default)
-        case let .secession(password):
+        case let .withdraw(password):
             return .requestParameters(parameters: [
                 "password": password
             ], encoding: JSONEncoding.default)
@@ -55,11 +55,11 @@ extension UserAPI: TookAPI {
             return [
                 500: .unknown
             ]
-        case .reset:
+        case .renewalPassword:
             return [
                 500: .unknown
             ]
-        case .secession:
+        case .withdraw:
             return [
                 404: .unknown,
                 500: .unknown
