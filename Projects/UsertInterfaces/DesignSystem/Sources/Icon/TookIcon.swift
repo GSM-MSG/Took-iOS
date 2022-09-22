@@ -10,7 +10,7 @@ public struct TookIcon: View {
         case selectedCard
 
         case tabHome
-        case tabCardLIst
+        case tabCardList
     }
 
     var icon: Icon
@@ -57,7 +57,7 @@ public struct TookIcon: View {
             return DesignSystemAsset.Icons.selectedCard.suiImage
         case .tabHome:
             return DesignSystemAsset.Icons.tabHome.suiImage
-        case .tabCardLIst:
+        case .tabCardList:
             return DesignSystemAsset.Icons.tabCardList.suiImage
         }
     }

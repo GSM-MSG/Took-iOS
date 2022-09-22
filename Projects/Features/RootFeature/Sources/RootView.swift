@@ -4,22 +4,20 @@ import IntroFeature
 import MainFeature
 
 public struct RootView: View {
-    @StateObject var sceneStateModel: SceneStateModel
+    @AppStorage(StorageKeys.sceneState.rawValue) var sceneState: SceneState = .intro
     let introBuilder: IntroComponent
     let mainBuilder: MainComponent
 
     public init(
-        sceneStateModel: SceneStateModel,
         introBuilder: IntroComponent,
         mainBuilder: MainComponent
     ) {
-        _sceneStateModel = StateObject(wrappedValue: sceneStateModel)
         self.introBuilder = introBuilder
         self.mainBuilder = mainBuilder
     }
 
     public var body: some View {
-        switch sceneStateModel.sceneState {
+        switch sceneState {
         case .intro:
             introBuilder.makeView()
         case .main:
