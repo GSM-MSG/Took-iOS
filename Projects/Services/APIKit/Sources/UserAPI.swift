@@ -53,14 +53,18 @@ extension UserAPI: TookAPI {
         switch self {
         case .myBusinessCard:
             return [
+                404: .unknown,
                 500: .unknown
             ]
         case .renewalPassword:
             return [
+                400: .passwordNotValid,
+                401: .emailNotCertification,
                 500: .unknown
             ]
         case .withdraw:
             return [
+                400: .passwordNotSame,
                 404: .unknown,
                 500: .unknown
             ]
