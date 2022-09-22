@@ -1,4 +1,5 @@
 import Foundation
+import DataMappingModule
 
 public struct BusinessCard: Equatable {
     public init(
@@ -20,4 +21,16 @@ public struct BusinessCard: Equatable {
     public let backUrl: String
     public let createdAt: Date
     public let updatedAt: Date
+}
+
+public extension BusinessCardResponseDTO {
+    func toDomain() -> BusinessCard {
+        return .init(
+            uuid: uuid,
+            frontUrl: frontUrl,
+            backUrl: backUrl,
+            createdAt: createdAt.toDate(),
+            updatedAt: updatedAt.toDate()
+        )
+    }
 }

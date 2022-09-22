@@ -17,4 +17,11 @@ extension AppComponent {
             EmailRemoteDataSourceImpl(keychain: keychain)
         }
     }
+
+    // MARK: - User
+    public var userRemoteDataSource: any UserRemoteDataSource {
+        shared {
+            UserRemoteDataSourceImpl(keychain: keychain)
+        }
+    }
 }
