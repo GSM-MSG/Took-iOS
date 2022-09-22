@@ -1,6 +1,6 @@
 import Foundation
 
-public struct BusinessCard: Decodable {
+public struct BusinessCardResponseDTO: Decodable {
     public init(
         uuid: String,
         frontUrl: String,

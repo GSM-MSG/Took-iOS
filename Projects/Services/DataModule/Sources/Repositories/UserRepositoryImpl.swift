@@ -9,8 +9,9 @@ public struct UserRepositoryImpl: UserRepository {
         self.userRemoteDataSource = userRemoteDataSource
     }
 
-    public func myBusinessCard() async throws {
+    public func myBusinessCard() async throws -> [BusinessCard] {
         try await userRemoteDataSource.myBesinessCard()
+            .map { $0.toDomain() }
     }
 
     public func renewalPassword(password: String) async throws {
