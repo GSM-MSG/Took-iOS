@@ -9,10 +9,10 @@ public struct NewCardView: View {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
     @State var showAction: Bool = false
-    @State var showImagePicker0: Bool = false
-    @State var showImagePicker1: Bool = false
+    @State var showFrontImagePicker: Bool = false
+    @State var showBackImagePicker1: Bool = false
 
-    @State var uiImage: UIImage?
+    @State var frontImage: UIImage?
     @State var backImage: UIImage?
 
     public var body: some View {
@@ -27,14 +27,14 @@ public struct NewCardView: View {
                         geometry: geometry,
                         title: "앞면 등록하기",
                         image: $viewModel.frontImage,
-                        isShow: $showImagePicker0
+                        isShow: $showFrontImagePicker
                     )
 
                     cardView(
                         geometry: geometry,
                         title: "뒷면 등록하기",
                         image: $viewModel.backImage,
-                        isShow: $showImagePicker1
+                        isShow: $showBackImagePicker1
                     )
 
                     Spacer()
