@@ -116,7 +116,7 @@ extension AppComponent: Registration {
         localTable["emailRepository-any EmailRepository"] = { self.emailRepository as Any }
         localTable["userRepository-any UserRepository"] = { self.userRepository as Any }
         localTable["rootComponent-RootComponent"] = { self.rootComponent as Any }
-        localTable["keychain-Keychain"] = { self.keychain as Any }
+        localTable["keychain-any Keychain"] = { self.keychain as Any }
         localTable["introComponent-IntroComponent"] = { self.introComponent as Any }
         localTable["signupComponent-SignupComponent"] = { self.signupComponent as Any }
         localTable["signinComponent-SigninComponent"] = { self.signinComponent as Any }
