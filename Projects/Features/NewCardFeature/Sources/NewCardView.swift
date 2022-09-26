@@ -46,7 +46,6 @@ public struct NewCardView: View {
             .navigationTitle("명함 등록")
             .navigationBarTitleDisplayMode(.inline)
         }
-
     }
 
     @ViewBuilder
