@@ -8,6 +8,7 @@ import KeychainModule
 import CommonFeature
 import SigninFeature
 import VerifyFeature
+import NewCardFeature
 
 final class AppComponent: BootstrapComponent {}
 
@@ -53,5 +54,9 @@ extension AppComponent {
 extension AppComponent {
     public var mainComponent: MainComponent {
         MainComponent(parent: self)
+    }
+
+    public var newCardComponent: NewCardComponent {
+        NewCardComponent(parent: self)
     }
 }

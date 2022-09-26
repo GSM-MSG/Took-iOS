@@ -8,6 +8,7 @@ import KeychainModule
 import MainFeature
 import NeedleFoundation
 import NetworkModule
+import NewCardFeature
 import RootFeature
 import SigninFeature
 import SignupFeature
@@ -94,6 +95,17 @@ private class VerifyDependency0d6de67080ea263fd25dProvider: VerifyDependency {
 private func factoryc9c1a13446a3ac12f8f9f47b58f8f304c97af4d5(_ component: NeedleFoundation.Scope) -> AnyObject {
     return VerifyDependency0d6de67080ea263fd25dProvider(appComponent: parent1(component) as! AppComponent)
 }
+private class NewCardDependencycf3e77acfa40a16e8c2dProvider: NewCardDependency {
+
+
+    init() {
+
+    }
+}
+/// ^->AppComponent->NewCardComponent
+private func factory38bfb0178a789b2e6141e3b0c44298fc1c149afb(_ component: NeedleFoundation.Scope) -> AnyObject {
+    return NewCardDependencycf3e77acfa40a16e8c2dProvider()
+}
 private class IntroDependencye04a89d39c733d937499Provider: IntroDependency {
     var signupComponent: SignupComponent {
         return appComponent.signupComponent
@@ -122,6 +134,7 @@ extension AppComponent: Registration {
         localTable["signinComponent-SigninComponent"] = { self.signinComponent as Any }
         localTable["verifyComponent-VerifyComponent"] = { self.verifyComponent as Any }
         localTable["mainComponent-MainComponent"] = { self.mainComponent as Any }
+        localTable["newCardComponent-NewCardComponent"] = { self.newCardComponent as Any }
         localTable["signinUseCase-any SigninUseCase"] = { self.signinUseCase as Any }
         localTable["signupUseCase-any SignupUseCase"] = { self.signupUseCase as Any }
         localTable["logoutUseCase-any LogoutUseCase"] = { self.logoutUseCase as Any }
@@ -162,6 +175,11 @@ extension VerifyComponent: Registration {
         keyPathToName[\VerifyDependency.emailVerifyUseCase] = "emailVerifyUseCase-any EmailVerifyUseCase"
     }
 }
+extension NewCardComponent: Registration {
+    public func registerItems() {
+
+    }
+}
 extension IntroComponent: Registration {
     public func registerItems() {
         keyPathToName[\IntroDependency.signupComponent] = "signupComponent-SignupComponent"
@@ -189,6 +207,7 @@ private func register1() {
     registerProviderFactory("^->AppComponent->RootComponent", factory264bfc4d4cb6b0629b40f47b58f8f304c97af4d5)
     registerProviderFactory("^->AppComponent->SigninComponent", factory2882a056d84a613debcce3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->VerifyComponent", factoryc9c1a13446a3ac12f8f9f47b58f8f304c97af4d5)
+    registerProviderFactory("^->AppComponent->NewCardComponent", factory38bfb0178a789b2e6141e3b0c44298fc1c149afb)
     registerProviderFactory("^->AppComponent->IntroComponent", factoryaf0e1f54bae4c77ad4acf47b58f8f304c97af4d5)
 }
 #endif
