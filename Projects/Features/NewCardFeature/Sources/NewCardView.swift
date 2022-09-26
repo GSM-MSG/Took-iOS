@@ -8,6 +8,7 @@ public struct NewCardView: View {
     public init(viewModel: NewCardViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
+
     @State var showAction: Bool = false
     @State var showFrontImagePicker: Bool = false
     @State var showBackImagePicker1: Bool = false
