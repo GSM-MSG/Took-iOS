@@ -25,6 +25,7 @@ open class BaseViewModel: ObservableObject {
                 isError = true
                 errorMessage = error.asTookError.localizedDescription
             }
+            isLoading = false
         }
     }
 }

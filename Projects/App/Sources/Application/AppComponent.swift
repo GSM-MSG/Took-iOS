@@ -24,14 +24,14 @@ extension AppComponent {
         }
     }
 
-    public var keychain: Keychain {
+    public var keychain: any Keychain {
         shared {
             DefaultKeychain()
         }
     }
 }
 
-// MARK: - Intro
+// MARK: - Auth
 extension AppComponent {
     public var introComponent: IntroComponent {
         IntroComponent(parent: self)

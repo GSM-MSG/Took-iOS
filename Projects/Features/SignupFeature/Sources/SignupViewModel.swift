@@ -1,20 +1,18 @@
 import Combine
+import CommonFeature
 
-public final class SignupViewModel: ObservableObject {
+public final class SignupViewModel: BaseViewModel {
     @Published var emailText: String = ""
     @Published var passwordText: String = ""
-    @Published var isError: Bool = false
-    @Published var errorMessage: String = ""
     @Published var isPresentedTerms = false
     @Published var isNavigateToVerify = false
     var isFormEmpty: Bool {
         emailText.isEmpty || passwordText.isEmpty
     }
 
-    public init() {}
-
-    @MainActor
     func signup() async {
-        isPresentedTerms = true
+        await withAsyncTry(with: self) { owner in
+            owner.isPresentedTerms = true
+        }
     }
 }
