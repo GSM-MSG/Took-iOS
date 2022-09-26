@@ -10,8 +10,9 @@ public final class SignupViewModel: BaseViewModel {
         emailText.isEmpty || passwordText.isEmpty
     }
 
-    @MainActor
     func signup() async {
-        isPresentedTerms = true
+        withAsyncTry(with: self) { owner in
+            owner.isPresentedTerms = true
+        }
     }
 }
