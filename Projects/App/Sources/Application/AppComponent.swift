@@ -23,7 +23,7 @@ extension AppComponent {
         }
     }
 
-    public var keychain: Keychain {
+    public var keychain: any Keychain {
         shared {
             DefaultKeychain()
         }
