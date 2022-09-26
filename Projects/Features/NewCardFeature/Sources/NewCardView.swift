@@ -11,7 +11,6 @@ public struct NewCardView: View {
     @State var showAction: Bool = false
     @State var showFrontImagePicker: Bool = false
     @State var showBackImagePicker1: Bool = false
-
     @State var frontImage: UIImage?
     @State var backImage: UIImage?
 
