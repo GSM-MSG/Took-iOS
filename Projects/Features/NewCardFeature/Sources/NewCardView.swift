@@ -3,7 +3,11 @@ import DesignSystem
 
 public struct NewCardView: View {
 
-    public init() {}
+    @StateObject var viewModel: NewCardViewModel
+
+    public init(viewModel: NewCardViewModel) {
+        _viewModel = StateObject(wrappedValue: viewModel)
+    }
     @State var showAction: Bool = false
     @State var showImagePicker0: Bool = false
     @State var showImagePicker1: Bool = false
@@ -19,14 +23,25 @@ public struct NewCardView: View {
                     .ignoresSafeArea()
 
                 VStack(spacing: 16) {
-                    cardView(geometry: geometry, title: "앞면 등록하기", image: $uiImage, isShow: $showImagePicker0)
+                    cardView(
+                        geometry: geometry,
+                        title: "앞면 등록하기",
+                        image: $viewModel.frontImage,
+                        isShow: $showImagePicker0
+                    )
 
-                    cardView(geometry: geometry, title: "뒷면 등록하기", image: $backImage, isShow: $showImagePicker1)
+                    cardView(
+                        geometry: geometry,
+                        title: "뒷면 등록하기",
+                        image: $viewModel.backImage,
+                        isShow: $showImagePicker1
+                    )
 
                     Spacer()
 
                     TookButton(text: "등록완료!")
                         .padding(16)
+                        .disabled(viewModel.isFormEmpty)
                 }
             }
             .navigationTitle("명함 등록")

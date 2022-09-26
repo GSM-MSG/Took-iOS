@@ -12,7 +12,7 @@ struct TookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NewCardView()
+            NewCardView(viewModel: NewCardViewModel())
         }
     }
 }

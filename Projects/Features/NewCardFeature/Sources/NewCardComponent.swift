@@ -7,6 +7,6 @@ public protocol NewCardDependency: Dependency {
 
 public final class NewCardComponent: Component<NewCardDependency>, ComponentBuilder {
     public func makeView() -> some View {
-        NewCardView()
+        NewCardView(viewModel: NewCardViewModel())
     }
 }
