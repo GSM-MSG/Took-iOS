@@ -30,7 +30,7 @@ extension AppComponent {
     }
 }
 
-// MARK: - Intro
+// MARK: - Auth
 extension AppComponent {
     public var introComponent: IntroComponent {
         IntroComponent(parent: self)
