@@ -1,6 +1,7 @@
 import SwiftUI
 import NeedleFoundation
 import NewCardFeature
+import MainFeature
 
 @main
 struct TookApp: App {

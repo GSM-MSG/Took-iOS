@@ -4,50 +4,69 @@ import DesignSystem
 public struct NewCardView: View {
 
     public init() {}
+    @State var showAction: Bool = false
+    @State var showImagePicker0: Bool = false
+    @State var showImagePicker1: Bool = false
+
+    @State var uiImage: UIImage?
+    @State var backImage: UIImage?
 
     public var body: some View {
+
         GeometryReader { geometry in
             ZStack {
                 TookImage(.background)
                     .ignoresSafeArea()
-                    .tag(0)
-                VStack {
-                    VStack {
-                        Image(systemName: "plus.circle.fill")
-                            .padding(.bottom, 8)
-                            .frame(width: 32, height: 32)
 
-                        Text("앞면 등록하기")
-                            .tookTypo(.medium(.medium))
-                    }
-                    .frame(width: geometry.size.width - 24, height: geometry.size.width * 0.6)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.Took.darkGray)
-                    )
-                    .background(Color.Took.transparencyBoxBg)
-                    .padding()
-                    VStack {
-                        Image(systemName: "plus.circle.fill")
-                            .padding(.bottom, 8)
-                        Text("뒷면 등록하기")
-                            .tookTypo(.medium(.medium))
-                    }
-                    .frame(width: (geometry.size.width) - 24, height: geometry.size.width * 0.6)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color.Took.darkGray)
-                    )
-                    .background(Color.Took.transparencyBoxBg)
-                    .padding(.bottom, 18)
+                VStack(spacing: 16) {
+                    cardView(geometry: geometry, title: "앞면 등록하기", image: $uiImage, isShow: $showImagePicker0)
+
+                    cardView(geometry: geometry, title: "뒷면 등록하기", image: $backImage, isShow: $showImagePicker1)
+
                     Spacer()
+
                     TookButton(text: "등록완료!")
-                        .padding()
+                        .padding(16)
                 }
             }
             .navigationTitle("명함 등록")
             .navigationBarTitleDisplayMode(.inline)
         }
 
+    }
+
+    @ViewBuilder
+    func cardView(
+        geometry: GeometryProxy,
+        title: String,
+        image: Binding<UIImage?>,
+        isShow: Binding<Bool>
+    ) -> some View {
+        Group {
+            if let image = image.wrappedValue {
+                Image(uiImage: image)
+                    .resizable()
+                    .cornerRadius(8)
+            } else {
+                VStack(spacing: 8) {
+                    Image(systemName: "plus.circle.fill")
+
+                    Text(title)
+                        .tookTypo(.medium(.medium))
+                }
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .frame(height: (geometry.size.width - 32) * 0.6)
+        .overlay {
+            RoundedRectangle(cornerRadius: 8)
+                .stroke(Color.Took.darkGray)
+        }
+        .background(Color.Took.transparencyBoxBg)
+        .padding(.horizontal, 16)
+        .onTapGesture {
+            isShow.wrappedValue.toggle()
+        }
+        .imagePicker(isShow: isShow, uiImage: image)
     }
 }
