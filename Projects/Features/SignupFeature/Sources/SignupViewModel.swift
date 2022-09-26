@@ -11,7 +11,7 @@ public final class SignupViewModel: BaseViewModel {
     }
 
     func signup() async {
-        withAsyncTry(with: self) { owner in
+        await withAsyncTry(with: self) { owner in
             owner.isPresentedTerms = true
         }
     }
