@@ -33,51 +33,32 @@ public struct SecureTookTextField: View {
                     .foregroundColor(Color.Took.lightGray)
                     .tookTypo(.semibold(.medium))
             }
-            if isSecure {
-                SecureField("", text: $text)
-                    .padding()
-                    .foregroundColor(Color.Took.white)
-                    .modifier(TookTextFieldSecureModifier(isSecure: $isSecure))
-                    .modifier(PlaceholderStyle(showPlaceholder: text.isEmpty, placeholder: placeholderText))
-                    .background(Color.Took.transparencyBoxBg)
-                    .onSubmit(onCommit)
-                    .cornerRadius(16)
-                    .focused($isFocus)
-                    .overlay {
-                        if isFocus {
-                            RoundedRectangle(cornerRadius: 16)
-                                .strokeBorder(RadialGradient.primary)
-                        } else if isError {
-                            RoundedRectangle(cornerRadius: 16)
-                                .strokeBorder(Color.Took.error)
-                        } else {
-                            RoundedRectangle(cornerRadius: 16)
-                                .strokeBorder(Color.Took.darkGray)
-                        }
-                }
-            } else {
-                TextField("", text: $text)
-                    .padding()
-                    .foregroundColor(Color.Took.white)
-                    .modifier(TookTextFieldSecureModifier(isSecure: $isSecure))
-                    .modifier(PlaceholderStyle(showPlaceholder: text.isEmpty, placeholder: placeholderText))
-                    .background(Color.Took.transparencyBoxBg)
-                    .onSubmit(onCommit)
-                    .cornerRadius(16)
-                    .focused($isFocus)
-                    .overlay {
-                        if isFocus {
-                            RoundedRectangle(cornerRadius: 16)
-                                .strokeBorder(RadialGradient.primary)
-                        } else if isError {
-                            RoundedRectangle(cornerRadius: 16)
-                                .strokeBorder(Color.Took.error)
-                        } else {
-                            RoundedRectangle(cornerRadius: 16)
-                                .strokeBorder(Color.Took.darkGray)
-                        }
+            Group {
+                if isSecure {
+                   SecureField("", text: $text)
+                } else {
+                    TextField("", text: $text)
                 }
             }
+            .padding()
+            .foregroundColor(Color.Took.white)
+            .modifier(TookTextFieldSecureModifier(isSecure: $isSecure))
+            .modifier(PlaceholderStyle(showPlaceholder: text.isEmpty, placeholder: placeholderText))
+            .background(Color.Took.transparencyBoxBg)
+            .onSubmit(onCommit)
+            .cornerRadius(16)
+            .focused($isFocus)
+            .overlay {
+                if isFocus {
+                    RoundedRectangle(cornerRadius: 16)
+                        .strokeBorder(RadialGradient.primary)
+                } else if isError {
+                    RoundedRectangle(cornerRadius: 16)
+                        .strokeBorder(Color.Took.error)
+                } else {
+                    RoundedRectangle(cornerRadius: 16)
+                        .strokeBorder(Color.Took.darkGray)
+                }
             if isError && !errorText.isEmpty {
                 Label {
                     Text(errorText)
