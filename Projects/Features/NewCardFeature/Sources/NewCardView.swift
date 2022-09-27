@@ -9,6 +9,7 @@ public struct NewCardView: View {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
+    @Environment(\.dismiss) var dismiss
     @State var showAction: Bool = false
     @State var showFrontImagePicker: Bool = false
     @State var showBackImagePicker1: Bool = false
@@ -46,6 +47,7 @@ public struct NewCardView: View {
             }
             .navigationTitle("명함 등록")
             .navigationBarTitleDisplayMode(.inline)
+            .configBackButton(dismiss: dismiss)
         }
     }
 
