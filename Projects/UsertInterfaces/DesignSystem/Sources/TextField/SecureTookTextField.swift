@@ -35,7 +35,7 @@ public struct SecureTookTextField: View {
             }
             Group {
                 if isSecure {
-                   SecureField("", text: $text)
+                    SecureField("", text: $text)
                 } else {
                     TextField("", text: $text)
                 }
@@ -59,14 +59,15 @@ public struct SecureTookTextField: View {
                     RoundedRectangle(cornerRadius: 16)
                         .strokeBorder(Color.Took.darkGray)
                 }
-            if isError && !errorText.isEmpty {
-                Label {
-                    Text(errorText)
-                        .tookTypo(.regular(.small))
-                } icon: {
-                    Image(systemName: "exclamationmark.circle")
+                if isError && !errorText.isEmpty {
+                    Label {
+                        Text(errorText)
+                            .tookTypo(.regular(.small))
+                    } icon: {
+                        Image(systemName: "exclamationmark.circle")
+                    }
+                    .foregroundColor(Color.Took.error)
                 }
-                .foregroundColor(Color.Took.error)
             }
         }
     }
