@@ -12,7 +12,7 @@ public struct NewCardView: View {
     @Environment(\.dismiss) var dismiss
     @State var showAction: Bool = false
     @State var showFrontImagePicker: Bool = false
-    @State var showBackImagePicker1: Bool = false
+    @State var showBackImagePicker: Bool = false
     @State var frontImage: UIImage?
     @State var backImage: UIImage?
 
@@ -35,7 +35,7 @@ public struct NewCardView: View {
                         geometry: geometry,
                         title: "뒷면 등록하기",
                         image: $viewModel.backImage,
-                        isShow: $showBackImagePicker1
+                        isShow: $showBackImagePicker
                     )
 
                     Spacer()
