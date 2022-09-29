@@ -2,22 +2,16 @@ import SwiftUI
 import DesignSystem
 
 public struct NewCardView: View {
-
     @StateObject var viewModel: NewCardViewModel
+    @Environment(\.dismiss) var dismiss
+    @State var showFrontImagePicker: Bool = false
+    @State var showBackImagePicker: Bool = false
 
     public init(viewModel: NewCardViewModel) {
         _viewModel = StateObject(wrappedValue: viewModel)
     }
 
-    @Environment(\.dismiss) var dismiss
-    @State var showAction: Bool = false
-    @State var showFrontImagePicker: Bool = false
-    @State var showBackImagePicker: Bool = false
-    @State var frontImage: UIImage?
-    @State var backImage: UIImage?
-
     public var body: some View {
-
         GeometryReader { geometry in
             ZStack {
                 TookImage(.background)
