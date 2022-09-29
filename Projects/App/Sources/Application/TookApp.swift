@@ -1,6 +1,7 @@
 import SwiftUI
 import NeedleFoundation
-import VerifyFeature
+import NewCardFeature
+import MainFeature
 
 @main
 struct TookApp: App {
@@ -11,7 +12,7 @@ struct TookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            AppComponent().makeRootView()
+            NewCardView(viewModel: NewCardViewModel())
         }
     }
 }
