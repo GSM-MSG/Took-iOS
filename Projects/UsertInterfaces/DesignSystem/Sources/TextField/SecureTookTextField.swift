@@ -40,6 +40,7 @@ public struct SecureTookTextField: View {
                     TextField("", text: $text)
                 }
             }
+            .tookTypo(.regular(.large))
             .padding()
             .foregroundColor(Color.Took.white)
             .modifier(TookTextFieldSecureModifier(isSecure: $isSecure))

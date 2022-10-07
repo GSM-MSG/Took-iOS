@@ -33,6 +33,7 @@ public struct TookTextField: View {
                     .tookTypo(.semibold(.medium))
             }
             TextField("", text: $text)
+                .tookTypo(.regular(.large))
                 .padding()
                 .foregroundColor(Color.Took.white)
                 .modifier(TookTextFieldClearModifier(text: $text))
