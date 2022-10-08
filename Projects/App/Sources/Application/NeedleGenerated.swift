@@ -1,6 +1,6 @@
 
 
-import CommonFeature
+import BaseFeature
 import DataModule
 import DomainModule
 import IntroFeature

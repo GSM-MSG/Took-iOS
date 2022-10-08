@@ -1,5 +1,5 @@
 import SwiftUI
-import CommonFeature
+import BaseFeature
 import Combine
 
 public class NewCardViewModel: BaseViewModel {

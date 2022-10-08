@@ -1,5 +1,5 @@
 import NeedleFoundation
-import CommonFeature
+import BaseFeature
 import DomainModule
 import SwiftUI
 

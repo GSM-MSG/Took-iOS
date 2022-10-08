@@ -1,5 +1,5 @@
 import NeedleFoundation
-import CommonFeature
+import BaseFeature
 import IntroFeature
 import MainFeature
 

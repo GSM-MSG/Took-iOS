@@ -1,5 +1,5 @@
 import Combine
-import CommonFeature
+import BaseFeature
 
 public final class SignupViewModel: BaseViewModel {
     @Published var emailText: String = ""

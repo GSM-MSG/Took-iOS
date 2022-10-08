@@ -5,7 +5,7 @@ import MainFeature
 import IntroFeature
 import SignupFeature
 import KeychainModule
-import CommonFeature
+import BaseFeature
 import SigninFeature
 import VerifyFeature
 import NewCardFeature

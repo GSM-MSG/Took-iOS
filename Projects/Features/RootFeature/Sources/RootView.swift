@@ -1,5 +1,5 @@
 import SwiftUI
-import CommonFeature
+import BaseFeature
 import IntroFeature
 import MainFeature
 

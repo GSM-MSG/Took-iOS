@@ -1,7 +1,7 @@
 import Combine
 import DomainModule
 import ErrorModule
-import CommonFeature
+import BaseFeature
 
 public final class VerifyViewModel: BaseViewModel {
     private let email: String

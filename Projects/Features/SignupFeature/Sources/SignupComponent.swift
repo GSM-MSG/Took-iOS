@@ -1,6 +1,6 @@
 import NeedleFoundation
 import SwiftUI
-import CommonFeature
+import BaseFeature
 import VerifyFeature
 
 public protocol SignupDependency: Dependency {
