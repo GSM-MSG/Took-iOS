@@ -20,7 +20,7 @@ public extension TargetDependency.Project.Features {
     static let SignupFeature = TargetDependency.feature(name: "SignupFeature")
     static let SigninFeature = TargetDependency.feature(name: "SigninFeature")
     static let IntroFeature = TargetDependency.feature(name: "IntroFeature")
-    static let CommonFeature = TargetDependency.feature(name: "CommonFeature")
+    static let BaseFeature = TargetDependency.feature(name: "BaseFeature")
     static let RootFeature = TargetDependency.feature(name: "RootFeature")
 }
 

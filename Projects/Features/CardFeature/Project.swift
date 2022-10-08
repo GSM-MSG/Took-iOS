@@ -5,7 +5,7 @@ let project = Project.makeModule(
     name: "CardFeature",
     product: .staticFramework,
     dependencies: [
-        .Project.Features.CommonFeature,
+        .Project.Features.BaseFeature,
         .Project.Module.NFCModule
     ]
 )

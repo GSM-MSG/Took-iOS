@@ -5,6 +5,6 @@ let project = Project.makeModule(
     name: "SettingFeature",
     product: .staticFramework,
     dependencies: [
-        .Project.Features.CommonFeature
+        .Project.Features.BaseFeature
     ]
 )
