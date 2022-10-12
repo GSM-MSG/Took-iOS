@@ -25,12 +25,12 @@ struct TermsView: View {
 
                 Spacer()
             }
+            .padding(.top, 24)
             .onTapGesture {
                 agreedTerms = allAgreeState ? [] : Terms.allCases
                 privacyTerms = !allAgreeState
                 allAgreeState = !allAgreeState
             }
-            .padding(.top, 24)
 
             Divider()
                 .padding(.vertical, 16)
