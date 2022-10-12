@@ -18,13 +18,17 @@ struct TermsView: View {
                 TookCheckbox(isOn: $allAgreeState, willChange: { isOn in
                     agreedTerms = isOn ? [] : Terms.allCases
                     privacyTerms = !isOn
-                    print(agreedTerms)
                 })
 
                 Text("약관 전체동의")
                     .tookTypo(.medium(.large), color: .Took.black)
 
                 Spacer()
+            }
+            .onTapGesture {
+                agreedTerms = allAgreeState ? [] : Terms.allCases
+                privacyTerms = !allAgreeState
+                allAgreeState = !allAgreeState
             }
             .padding(.top, 24)
 
@@ -73,6 +77,17 @@ struct TermsView: View {
                     .frame(width: 9, height: 16)
                     .foregroundColor(.Took.lightGray)
             }
+        }
+        .onTapGesture {
+            if isOn.wrappedValue {
+                agreedTerms.removeAll { $0 == term }
+            } else {
+                agreedTerms.append(term)
+            }
+            withAnimation {
+                allAgreeState = agreedTerms == Terms.allCases
+            }
+            isOn.wrappedValue.toggle()
         }
     }
 }

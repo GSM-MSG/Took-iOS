@@ -12,7 +12,8 @@ struct TookApp: App {
 
     var body: some Scene {
         WindowGroup {
-            NewCardView(viewModel: NewCardViewModel())
+            AppComponent().signupComponent.makeView()
+//            NewCardView(viewModel: NewCardViewModel())
         }
     }
 }
