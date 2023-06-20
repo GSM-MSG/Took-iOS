@@ -1,0 +1,23 @@
+name: iOS CD
+
+on:
+  push:
+    branches: [ "000-cd-test" ]
+  pull_request:
+    branches: [ "000-cd-test" ]
+
+jobs:
+  build:
+    name: Build and Test default scheme using any available iPhone simulator
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: create .xcodeproj
+        run: |
+          TUIST_DEV=1 make generate
+      - name: test
+        run: |
+          ls
+        
