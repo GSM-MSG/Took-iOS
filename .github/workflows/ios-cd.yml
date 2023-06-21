@@ -6,9 +6,21 @@ on:
   pull_request:
     branches: [ "000-cd-test" ]
 
+env:
+  ENCRYPTED_CERT_FILE_PATH: ${{ '.github/secrets/ios_distribution.cer.gpg' }}
+  DNCRYPTED_CERT_FILE_PATH: ${{ '.github/secrets/ios_distribution.cer' }}
+  CERT_SYMMETRIC_KEY: ${{ 'secrets.CERT_SYMMETRIC_PWD' }}
+  # CERT_EXPORT_KEY: ${{}}
+
+  ENCRYPTED_PROVISION_FILE_PATH: ${{ '.github/secrets/Tookprofileforcd.mobileprovision.gpg' }}
+  DNCRYPTED_PROVISION_FILE_PATH: ${{ '.github/secrets/Tookprofileforcd.mobileprovision' }}
+  PROVISION_SYMMETRIC_KEY: ${{ 'secrets.PROVISION_SYMMETRIC_PWD' }}
+
+  KEYCHAIN: ${{ 'apple app dsitribution cert' }}
+
 jobs:
   build:
-    name: Build and Test default scheme using any available iPhone simulator
+    name: deploy
     runs-on: macos-latest
 
     steps:
@@ -22,8 +34,30 @@ jobs:
         run: |
           TUIST_DEV=0 make generate
 
-      - name: test
+      - name: configure keychain
         run: |
-          cd Projects/App
-          ls
+          security create-keychain -p "" "$KEYCHAIN"
+          security list-keychains -s "$KEYCHAIN"
+          security default-keychain -s "$KEYCHAIN"
+          security unlock-keychain -p "" "$KEYCHAIN"
+          security set-keychain-settings
+
+      - name: configure code signing
+        run: |
+          # decrypt cert file
+          gpg -d -o "$DNCRYPTED_CERT_FILE_PATH" --pinentry-mode=loopback --passphrase "$CERT_SYMMETRIC_KEY" "$ENCRYPTED_CERT_FILE_PATH"
+          # decrypt provisioning file
+          gpg -d -o "$DECRYPTED_PROVISION_FILE_PATH" --pinentry-mode=loopback --passphrase "$PROVISION_SYMMETRIC_KEY" "$ENCRYPTED_PROVISION_FILE_PATH"
           
+          # import cert file to keychain
+          security import "$DNCRYPTED_CERT_FILE_PATH" -k "$KEYCHAIN" -P "$CERT_EXPORT_KEY" -A
+          security set-key-partition-list -S apple-tool:,apple: -s -k "" "$KEYCHAIN"
+          
+          # for debugging
+          echo `ls .github/secretes/*.mobileprovision`
+          # 모든 프로비저닝 프로파일을 rename 하고 위에서 만든 디렉토리로 복사하는 과정
+          for PROVISION in `ls .github/secrets/*.mobileprovision`
+          do
+            UUID=`/usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin <<< $(security cms -D -i ./$PROVISION)`
+            cp "./$PROVISION" "$HOME/Library/MobileDevice/Provisioning Profiles/$UUID.mobileprovision"
+          done
