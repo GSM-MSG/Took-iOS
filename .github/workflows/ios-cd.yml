@@ -16,7 +16,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: install tuist
-        uses: curl -Ls https://install.tuist.io | bash
+        run: curl -Ls https://install.tuist.io | bash
 
       - name: create .xcodeproj
         run: |
