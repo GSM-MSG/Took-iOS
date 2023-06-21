@@ -20,9 +20,10 @@ jobs:
 
       - name: create .xcodeproj
         run: |
-          TUIST_DEV=1 make generate
+          TUIST_DEV=0 make generate
 
       - name: test
         run: |
+          cd Projects/App
           ls
           
