@@ -14,9 +14,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: install tuist
+        uses: curl -Ls https://install.tuist.io | bash
+
       - name: create .xcodeproj
         run: |
           TUIST_DEV=1 make generate
+
       - name: test
         run: |
           ls
