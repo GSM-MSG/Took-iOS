@@ -16,7 +16,7 @@ env:
   DECRYPTED_PROVISION_FILE_PATH: ${{ '.github/secrets/Tookprofileforcd.mobileprovision' }}
   PROVISION_SYMMETRIC_KEY: ${{ secrets.PROVISION_SYMMETRIC_PWD }}
 
-  KEYCHAIN: ${{ 'apple app dsitribution cert' }}
+  KEYCHAIN: ${{ 'apple app distribution cert' }}
 
 jobs:
   build:
