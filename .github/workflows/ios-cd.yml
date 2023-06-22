@@ -51,7 +51,7 @@ jobs:
           
           # import cert file to keychain
           security import "$DECRYPTED_CERT_FILE_PATH" -k "$KEYCHAIN" -P "" -A
-          security set-key-partition-list -S apple-tool:,apple: -s -k "" "$KEYCHAIN"
+          # security set-key-partition-list -S apple-tool:,apple: -s -k "" "$KEYCHAIN"
           
           # for debugging
           echo `ls .github/secretes/*.mobileprovision`
