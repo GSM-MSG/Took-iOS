@@ -32,6 +32,7 @@ jobs:
 
       - name: create .xcodeproj
         run: |
+          ls
           TUIST_DEV=0 make generate
 
       - name: configure keychain
