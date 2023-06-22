@@ -44,6 +44,7 @@ jobs:
 
       - name: configure code signing
         run: |
+          gpg --version
           # decrypt cert file
           gpg -d -o "$DNCRYPTED_CERT_FILE_PATH" --pinentry-mode=loopback --passphrase "$CERT_SYMMETRIC_KEY" "$ENCRYPTED_CERT_FILE_PATH"
           # decrypt provisioning file
