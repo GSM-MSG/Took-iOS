@@ -9,12 +9,12 @@ on:
 env:
   ENCRYPTED_CERT_FILE_PATH: ${{ '.github/secrets/ios_distribution.cer.gpg' }}
   DECRYPTED_CERT_FILE_PATH: ${{ '.github/secrets/ios_distribution.cer' }}
-  CERT_SYMMETRIC_KEY: ${{ 'secrets.CERT_SYMMETRIC_PWD' }}
+  CERT_SYMMETRIC_KEY: ${{ secrets.CERT_SYMMETRIC_PWD }}
   # CERT_EXPORT_KEY: ${{}}
 
   ENCRYPTED_PROVISION_FILE_PATH: ${{ '.github/secrets/Tookprofileforcd.mobileprovision.gpg' }}
   DECRYPTED_PROVISION_FILE_PATH: ${{ '.github/secrets/Tookprofileforcd.mobileprovision' }}
-  PROVISION_SYMMETRIC_KEY: ${{ 'secrets.PROVISION_SYMMETRIC_PWD' }}
+  PROVISION_SYMMETRIC_KEY: ${{ secrets.PROVISION_SYMMETRIC_PWD }}
 
   KEYCHAIN: ${{ 'apple app dsitribution cert' }}
 
