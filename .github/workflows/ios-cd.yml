@@ -7,7 +7,7 @@ on:
     branches: [ "000-cd-test" ]
 
 env:
-  ENCRYPTED_CERT_FILE_PATH: ${{ '.github/secrets/ios_distribution.cer.gpg' }}
+  ENCRYPTED_CERT_FILE_PATH: ${{ '.github/secrets/iphone Distribution.cer.gpg' }}
   DECRYPTED_CERT_FILE_PATH: ${{ '.github/secrets/ios_distribution.cer' }}
   CERT_SYMMETRIC_KEY: ${{ secrets.CERT_SYMMETRIC_PWD }}
   # CERT_EXPORT_KEY: ${{}}
