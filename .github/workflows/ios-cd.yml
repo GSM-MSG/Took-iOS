@@ -62,3 +62,9 @@ jobs:
             UUID=`/usr/libexec/PlistBuddy -c 'Print :UUID' /dev/stdin <<< $(security cms -D -i ./$PROVISION)`
             cp "./$PROVISION" "$HOME/Library/MobileDevice/Provisioning Profiles/$UUID.mobileprovision"
           done
+
+      - name: build into an archive
+        run: |
+          ls
+          xcodebuild -project .xcodeproj -scheme YourScheme -archivePath /Path/To/Output/YourApp.xcarchive archive
+
