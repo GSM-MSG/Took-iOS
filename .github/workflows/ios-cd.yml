@@ -32,7 +32,7 @@ jobs:
 
       - name: create .xcodeproj
         run: |
-          TUIST_DEV=0 make generate
+          make generate_with_no_lint
 
       - name: configure keychain
         run: |
