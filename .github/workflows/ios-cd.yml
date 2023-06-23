@@ -65,6 +65,6 @@ jobs:
 
       - name: build into an archive
         run: |
-          xcodebuild -workspace Took-ios.xcworkspace -scheme Took-iOS-RELEASE -archivePath Took-ios.xcarchive -destination "platform=ios,OS=15.0" archive
+          xcodebuild -workspace Took-ios.xcworkspace -scheme Took-iOS-RELEASE -archivePath Took-ios.xcarchive -destination "platform=iOS Simulator,OS=15.0" archive
           ls
           ls ./Took-ios.xcarchive
