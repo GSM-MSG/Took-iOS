@@ -3,8 +3,8 @@ generate:
 	TUIST_DEV=1 tuist generate
 
 genrate_with_no_lint:
-    tuist fetch
-    TUIST_DEV=0 tuist generate
+	tuist fetch
+	TUIST_DEV=0 tuist generate
 
 clean:
 	rm -rf **/*.xcodeproj
