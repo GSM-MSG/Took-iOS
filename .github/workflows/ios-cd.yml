@@ -32,7 +32,6 @@ jobs:
 
       - name: create .xcodeproj
         run: |
-          ls
           TUIST_DEV=0 make generate
 
       - name: configure keychain
@@ -66,6 +65,5 @@ jobs:
 
       - name: build into an archive
         run: |
+          xcodebuild build -workspace Took-ios.xcworkspace -scheme Took-ios -archivePath ./Took-ios.xcarchive archive
           ls
-          xcodebuild -project .xcodeproj -scheme YourScheme -archivePath /Path/To/Output/YourApp.xcarchive archive
-
