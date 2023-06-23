@@ -65,5 +65,6 @@ jobs:
 
       - name: build into an archive
         run: |
+          xcodebuild -list -wrokspace Took-ios.xcworkspace
           xcodebuild build -workspace Took-ios.xcworkspace -scheme Took-ios -archivePath ./Took-ios.xcarchive archive
           ls
