@@ -69,6 +69,6 @@ jobs:
       - name: build into an archive
         run: |
           xcodebuild -version
-          xcodebuild -workspace Took-ios.xcworkspace -scheme Took-iOS-RELEASE -archivePath Took-ios.xcarchive -destination "platform=iOS Simulator,name=iphone 14,OS=16.2" archive DEVELOPMENT_TEAM=qwe123xyz
+          xcodebuild -workspace Took-ios.xcworkspace -scheme Took-iOS-RELEASE -archivePath Took-ios.xcarchive archive DEVELOPMENT_TEAM=qwe123xyz
           ls
           ls ./Took-ios.xcarchive
