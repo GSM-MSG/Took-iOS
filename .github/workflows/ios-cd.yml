@@ -18,6 +18,8 @@ env:
 
   KEYCHAIN: ${{ 'apple app distribution cert' }}
 
+  TEAM_ID: ${{ secrets.TEAMID }}
+
 jobs:
   build:
     name: deploy
@@ -69,6 +71,6 @@ jobs:
       - name: build into an archive
         run: |
           xcodebuild -version
-          xcodebuild -workspace Took-ios.xcworkspace -scheme Took-iOS-RELEASE -archivePath Took-ios.xcarchive archive PROVISIONING_PROFILE=$DECRYPTED_PROVISION_FILE_PATH
+          xcodebuild -workspace Took-ios.xcworkspace -scheme Took-iOS-RELEASE -archivePath Took-ios.xcarchive archive PROVISIONING_PROFILE=$DECRYPTED_PROVISION_FILE_PATH DEVELOPMENT_TEAM=$TEAMID
           ls
           ls ./Took-ios.xcarchive
