@@ -71,6 +71,6 @@ jobs:
       - name: build into an archive
         run: |
           xcodebuild -version
-          xcodebuild -workspace Took-ios.xcworkspace -scheme Took-iOS-RELEASE -archivePath Took-ios.xcarchive archive PROVISIONING_PROFILE=$DECRYPTED_PROVISION_FILE_PATH DEVELOPMENT_TEAM=$TEAM_ID
+          xcodebuild -workspace Took-ios.xcworkspace -scheme Took-iOS-RELEASE -archivePath Took-ios.xcarchive archive -configuration PROVISIONING_PROFILE=$DECRYPTED_PROVISION_FILE_PATH DEVELOPMENT_TEAM=$TEAM_ID
           ls
           ls ./Took-ios.xcarchive
