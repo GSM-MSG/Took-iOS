@@ -71,6 +71,6 @@ jobs:
       - name: build into an archive
         run: |
           xcodebuild -version
-          xcodebuild -workspace Took-ios.xcworkspace -scheme Took-iOS-RELEASE -archivePath Took-ios.xcarchive archive -xcconfig build.xcconfig DEVELOPMENT_TEAM=$TEAM_ID
+          xcodebuild build -workspace Took-ios.xcworkspace -scheme Took-iOS-RELEASE -archivePath Took-ios.xcarchive archive DEVELOPMENT_TEAM=$TEAM_ID
           ls
           ls ./Took-ios.xcarchive
