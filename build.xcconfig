@@ -1,1 +1,1 @@
-PROVISIONING_PROFILE_SPECIFIER = .github/secrets/ios_distribution.cer
+PROVISIONING_PROFILE_SPECIFIER = .github/secrets/Tookprofileforcd.mobileprovision
